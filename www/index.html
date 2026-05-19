@@ -3,262 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Study Vault Pro - NEET Edition</title>
+    <title>Study Vault Pro - Ultimate NEET Edition</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --primary-color: #2563eb;
+            --primary-color: #1e40af;
+            --secondary-color: #2563eb;
             --success-color: #16a34a;
             --danger-color: #dc2626;
-            --bg-color: #f8fafc;
+            --warning-color: #d97706;
+            --bg-color: #f1f5f9;
             --card-color: #ffffff;
             --text-dark: #0f172a;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-box: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-dark); padding-bottom: 30px; }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-dark);
-            padding-bottom: 60px;
-        }
-
-        /* Top Header */
         .header {
-            background: linear-gradient(135deg, #1e3a8a, #2563eb);
-            color: white;
-            padding: 20px;
-            border-bottom-right-radius: 25px;
-            border-bottom-left-radius: 25px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white; padding: 25px 20px;
+            border-bottom-right-radius: 25px; border-bottom-left-radius: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        /* Overall Progress Tracker */
         .overall-progress-card {
-            background: var(--card-color);
-            margin: -15px 15px 20px 15px;
-            padding: 15px;
-            border-radius: 15px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            background: var(--card-color); margin: -15px 15px 20px 15px;
+            padding: 20px; border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
 
-        .progress-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            font-size: 14px;
-            font-weight: 500;
+        .progress-info { display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: 600; }
+        .progress-bar-container { background-color: #e2e8f0; border-radius: 10px; height: 14px; overflow: hidden; }
+        .progress-bar { background: linear-gradient(90deg, #10b981, #059669); height: 100%; width: 0%; transition: width 0.5s ease; }
+
+        .subject-tabs { display: flex; justify-content: space-around; margin: 15px; background: #cbd5e1; padding: 6px; border-radius: 14px; }
+        .tab-btn { flex: 1; padding: 12px; border: none; background: none; font-weight: 700; color: #475569; border-radius: 10px; cursor: pointer; transition: 0.3s; }
+        .tab-btn.active { background: var(--card-color); color: var(--primary-color); box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+
+        .main-container { padding: 10px 15px; }
+        .view-section { display: none; }
+        .view-section.active { display: block; }
+
+        .chapter-card { background: var(--card-color); border-radius: 15px; padding: 20px; margin-bottom: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; }
+        .chapter-title { font-size: 16px; font-weight: 600; color: #1e293b; }
+        .chapter-actions { display: flex; gap: 10px; margin-top: 15px; }
+        
+        .btn { flex: 1; padding: 12px; border: none; border-radius: 8px; font-weight: 600; font-size: 13px; cursor: pointer; text-align: center; transition: 0.2s; }
+        .btn-formula { background: #eff6ff; color: var(--secondary-color); border: 1px solid #bfdbfe; }
+        .btn-test { background: var(--secondary-color); color: white; }
+        .btn-test:hover { background: var(--primary-color); }
+
+        /* Diagrams Styling Box */
+        .diagram-container {
+            background: #f8fafc; border: 1px dashed #cbd5e1;
+            padding: 15px; border-radius: 8px; margin-top: 10px; text-align: center;
+        }
+        .ascii-art-diagram {
+            font-family: monospace; font-size: 11px; white-space: pre;
+            background: #0f172a; color: #38bdf8; padding: 10px;
+            border-radius: 6px; display: inline-block; text-align: left;
+            max-width: 100%; overflow-x: auto; margin: 8px 0;
         }
 
-        .progress-bar-container {
-            background-color: #e2e8f0;
-            border-radius: 10px;
-            height: 12px;
-            overflow: hidden;
-        }
+        /* Engine Overlay */
+        .quiz-container { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--bg-color); z-index: 1000; display: none; flex-direction: column; }
+        .quiz-header { background: #0f172a; color: white; padding: 18px; display: flex; justify-content: space-between; align-items: center; }
+        .timer-badge { background: var(--danger-color); padding: 6px 14px; border-radius: 20px; font-weight: 700; letter-spacing: 0.5px; }
+        .question-box { padding: 20px; background: white; margin: 15px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); flex-grow: 1; overflow-y: auto; }
+        
+        .option-card { padding: 14px; border: 2px solid #e2e8f0; border-radius: 8px; margin-top: 12px; cursor: pointer; transition: 0.2s; font-weight: 500; }
+        .option-card.selected { border-color: var(--secondary-color); background: #eff6ff; }
+        .quiz-footer { padding: 15px; background: white; display: flex; justify-content: space-between; border-top: 1px solid #e2e8f0; }
 
-        .progress-bar {
-            background: linear-gradient(90deg, #10b981, #059669);
-            height: 100%;
-            width: 0%;
-            transition: width 0.4s ease;
-        }
-
-        /* Subject Tab Switcher */
-        .subject-tabs {
-            display: flex;
-            justify-content: space-around;
-            margin: 15px;
-            background: #e2e8f0;
-            padding: 5px;
-            border-radius: 12px;
-        }
-
-        .tab-btn {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            background: none;
-            font-weight: 600;
-            color: #64748b;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .tab-btn.active {
-            background: var(--card-color);
-            color: var(--primary-color);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        }
-
-        /* Container Main */
-        .main-container {
-            padding: 10px 15px;
-        }
-
-        .view-section {
-            display: none;
-        }
-
-        .view-section.active {
-            display: block;
-        }
-
-        /* Chapter Cards styling */
-        .chapter-card {
-            background: var(--card-color);
-            border-radius: 15px;
-            padding: 18px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
-            border: 1px solid #e2e8f0;
-        }
-
-        .chapter-title {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .chapter-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .btn {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 500;
-            font-size: 13px;
-            cursor: pointer;
-            text-align: center;
-        }
-
-        .btn-formula { background: #eff6ff; color: var(--primary-color); }
-        .btn-test { background: var(--primary-color); color: white; }
-
-        /* NEET Quiz Engine Overlays */
-        .quiz-container {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: var(--bg-color);
-            z-index: 1000;
-            display: none;
-            flex-direction: column;
-        }
-
-        .quiz-header {
-            background: #0f172a;
-            color: white;
-            padding: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .timer-badge {
-            background: var(--danger-color);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-weight: 600;
-        }
-
-        .question-box {
-            padding: 20px;
-            background: white;
-            margin: 15px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            flex-grow: 1;
-            overflow-y: auto;
-        }
-
-        .option-card {
-            padding: 12px;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            margin-top: 12px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .option-card.selected {
-            border-color: var(--primary-color);
-            background: #eff6ff;
-        }
-
-        .quiz-footer {
-            padding: 15px;
-            background: white;
-            display: flex;
-            justify-content: space-between;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        /* Formula Modal View */
-        .modal-view {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: white;
-            z-index: 999;
-            display: none;
-            flex-direction: column;
-            padding: 20px;
-            overflow-y: auto;
-        }
-
-        .formula-item {
-            background: #f1f5f9;
-            padding: 15px;
-            border-left: 4px solid var(--primary-color);
-            border-radius: 4px;
-            margin-bottom: 12px;
-        }
-
-        .close-btn {
-            align-self: flex-end;
-            background: #64748b;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 5px;
-            border: none;
-            margin-bottom: 15px;
-        }
-
-        /* Scorecard */
-        .scorecard {
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .score-metric {
-            font-size: 48px;
-            color: var(--primary-color);
-            font-weight: 700;
-        }
+        .modal-view { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: white; z-index: 999; display: none; flex-direction: column; padding: 20px; overflow-y: auto; }
+        .formula-item { background: #f8fafc; padding: 15px; border-left: 5px solid var(--secondary-color); border-radius: 6px; margin-bottom: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .close-btn { align-self: flex-end; background: #475569; color: white; padding: 8px 20px; border-radius: 6px; border: none; margin-bottom: 15px; font-weight: 600; }
+        .scorecard { text-align: center; padding: 40px 10px; }
+        .score-metric { font-size: 52px; color: var(--primary-color); font-weight: 800; margin: 15px 0; }
     </style>
 </head>
 <body>
 
     <div class="header">
         <h2>Study Vault Pro</h2>
-        <p style="font-size: 12px; opacity: 0.8;">NEET & Board Exam Preparation Dashboard</p>
+        <p style="font-size: 13px; opacity: 0.9; font-weight: 300;">PC&B Complete Master Dashboard • NEET 2026</p>
     </div>
 
     <div class="overall-progress-card">
         <div class="progress-info">
-            <span>Overall Syllabus Mastered</span>
+            <span>Syllabus Target Mastered</span>
             <span id="progress-text">0%</span>
         </div>
         <div class="progress-bar-container">
@@ -279,77 +115,115 @@
     </div>
 
     <div id="formula-panel" class="modal-view">
-        <button class="close-btn" onclick="closeFormulaPanel()"><i class="fa fa-times"></i> Close Sheet</button>
-        <h3 id="panel-title" style="margin-bottom: 15px;">Formulas</h3>
+        <button class="close-btn" onclick="closeFormulaPanel()"><i class="fa fa-arrow-left"></i> Back to Dashboard</button>
+        <h3 id="panel-title" style="margin-bottom: 20px; color: var(--primary-color);">Formulas & Concept Maps</h3>
         <div id="formula-content-target"></div>
     </div>
 
     <div id="quiz-engine" class="quiz-container">
         <div class="quiz-header">
-            <span id="quiz-title" style="font-weight:600;">NEET Mock Practice</span>
+            <span id="quiz-title" style="font-weight:700; font-size: 15px;">NEET Mock Arena</span>
             <div class="timer-badge"><i class="fa fa-clock"></i> <span id="clock">10:00</span></div>
         </div>
-        
-        <div class="question-box" id="question-arena">
-            </div>
-
+        <div class="question-box" id="question-arena"></div>
         <div class="quiz-footer">
-            <button class="btn" style="background:#64748b; color:white; max-width:100px;" onclick="exitQuiz()">Quit</button>
-            <button class="btn btn-test" style="max-width:150px;" id="next-submit-btn" onclick="processNextQuestion()">Next Question</button>
+            <button class="btn" style="background:#64748b; color:white; max-width:90px;" onclick="exitQuiz()">Quit</button>
+            <button class="btn btn-test" style="max-width:160px;" id="next-submit-btn" onclick="processNextQuestion()">Next Question</button>
         </div>
     </div>
 
     <script>
-        // Core NEET/RBSE Database Setup
+        // High Yield Complete Interactive NEET Syllabus Data
         const appDatabase = {
             physics: [
                 {
                     id: "p1",
-                    title: "Chapter 1: Electric Charges and Fields",
+                    title: "Electrostatics: Electric Charges and Fields",
                     formulas: [
-                        "Coulomb's Law: F = k * (q1 * q2) / r²",
-                        "Electric Field Strength: E = F / q",
-                        "Electric Dipole Moment: p = q * 2a",
-                        "Gauss's Theorem Flux: Φ = Q / ε₀"
+                        "Coulomb's Force Formula: F = 1/(4πε₀) * (q₁q₂)/r²",
+                        "Electric Field due to Point Charge: E = 1/(4πε₀) * q/r²",
+                        "Electric Dipole Moment Vector: p = q * (2a)",
+                        "Torque on a Dipole in Uniform Field: τ = p x E = pE sin(θ)",
+                        "Gauss's Law Closed Integral: ∮ E · dA = q_enclosed / ε₀"
                     ],
+                    hasDiagram: true,
+                    diagramTitle: "Electric Dipole Alignment Vector",
+                    diagramData: "   (+q) -------- p --------> (-q)\n     |                        |\n     +------> E Field ------->+",
                     questions: [
-                        { q: "What is the SI unit of electric charge?", o: ["Coulomb", "Newton", "Farad", "Ampere"], a: 0 },
-                        { q: "The value of permittivity of free space (ε₀) is:", o: ["9 x 10⁹ N m²/C²", "8.85 x 10⁻¹² C²/N m²", "1.6 x 10⁻¹⁹ C", "9 x 10⁻¹¹ C²/N m²"], a: 1 }
+                        { q: "What is the direction of an electric dipole moment vector?", o: ["From positive to negative charge", "From negative to positive charge", "Perpendicular to the line joining them", "Always random direction"], a: 1 },
+                        { q: "If the distance between two point charges is doubled, the electrostatic force between them becomes:", o: ["Double", "Half", "Four times", "One-fourth"], a: 3 }
+                    ]
+                },
+                {
+                    id: "p2",
+                    title: "Current Electricity",
+                    formulas: [
+                        "Ohm's Core Relation Vector: V = I * R  or  J = σE",
+                        "Drift Velocity Equation: v_d = (e * E * τ) / m",
+                        "Temperature Dependency: R_t = R_₀[1 + α(T - T_₀)]",
+                        "Kirchhoff's Current Law (KCL): ∑ I = 0 (Charge Conservation)",
+                        "Kirchhoff's Voltage Law (KVL): ∑ ΔV = 0 (Energy Conservation)"
+                    ],
+                    hasDiagram: false,
+                    questions: [
+                        { q: "Kirchhoff's first law (∑ I = 0) at a junction is based on the law of conservation of:", o: ["Charge", "Energy", "Momentum", "Mass"], a: 0 }
                     ]
                 }
             ],
             chemistry: [
                 {
                     id: "c1",
-                    title: "Chapter 1: Solutions",
+                    title: "Physical Chemistry: Solutions",
                     formulas: [
-                        "Molarity (M): Moles of Solute / Volume of Solution (L)",
-                        "Molality (m): Moles of Solute / Mass of Solvent (kg)",
-                        "Raoult's Law: P_solution = X_solvent * P°_solvent",
-                        "Osmotic Pressure (π): π = iCRT"
+                        "Molarity Metric (M): M = (Moles of Solute) / (Volume of Solution in Liters)",
+                        "Molality Metric (m): m = (Moles of Solute) / (Mass of Solvent in kg)",
+                        "Raoult's Law for Volatile Liquids: P_total = P_A° * X_A + P_B° * X_B",
+                        "Elevation of Boiling Point: ΔT_b = i * K_f * m",
+                        "Osmotic Pressure Formula Grid: π = i * C * R * T"
                     ],
+                    hasDiagram: false,
                     questions: [
-                        { q: "Which of the following concentration units depends on temperature?", o: ["Molality", "Molarity", "Mole fraction", "Weight percentage"], a: 1 }
+                        { q: "Which property is NOT a colligative property?", o: ["Osmotic pressure", "Elevation of boiling point", "Vapour pressure", "Depression of freezing point"], a: 2 }
+                    ]
+                },
+                {
+                    id: "c2",
+                    title: "Chemical Kinetics",
+                    formulas: [
+                        "Rate Law expression: Rate = k [A]^x [B]^y",
+                        "Integrated Rate Law (First Order): k = (2.303 / t) * log( [A]₀ / [A] )",
+                        "Half-life period (First Order): t_1/2 = 0.693 / k",
+                        "Arrhenius Activation Equation: k = A * e^(-E_a / RT)"
+                    ],
+                    hasDiagram: true,
+                    diagramTitle: "Activation Energy Profile Chart",
+                    diagramData: " Energy^\n        |    _/_\\_  <-- Transition State\n        |   /     \\\n        |--/React  \\___Prod\n        +-------------------> Reaction Coordinate",
+                    questions: [
+                        { q: "The half-life of a first-order reaction depends heavily on which metric?", o: ["Initial concentration", "Temperature / Rate Constant k", "Volume of reactor vessel", "Catalyst surface dimensions"], a: 1 }
                     ]
                 }
             ],
             biology: [
                 {
                     id: "b1",
-                    title: "Chapter 1: Sexual Reproduction in Flowering Plants",
+                    title: "Reproduction: Sexual Reproduction in Flowering Plants",
                     formulas: [
-                        "💡 Tip: Focus deeply on Double Fertilization structure and Diagram based Embryo Sac labelings.",
-                        "Pollen grain development steps: Microsporogenesis -> 2-celled stage (Vegetative + Generative)"
+                        "💡 NEET Key: Focus heavily on the 7-celled, 8-nucleate structure of the mature Embryo Sac.",
+                        "Microsporogenesis: 1 Pollen Mother Cell (PMC) -> 4 Functional Haploid Pollen Grains.",
+                        "Megasporogenesis: 1 Megaspore Mother Cell (MMC) -> 4 Megaspores -> 3 Degenerate, 1 Functional."
                     ],
+                    hasDiagram: true,
+                    diagramTitle: "7-Celled 8-Nucleate Embryo Sac",
+                    diagramData: "   [ Chalazal End: 3 Antipodal Cells ]\n         (  O   O   O  )\n         (      OO     ) <-- Central Cell (2 Polar Nuclei)\n         (  O   O   O  )\n   [ Micropylar End: 2 Synergids + 1 Egg Cell ]",
                     questions: [
-                        { q: "The functional megaspore undergoes how many mitotic divisions to form a mature embryo sac?", o: ["One", "Two", "Three", "Four"], a: 2 }
+                        { q: "How many functional megaspores survive inside a normal angiosperm ovule after meiosis?", o: ["4", "3", "2", "1"], a: 3 },
+                        { q: "Filiform apparatus is a highly characteristic feature of which component?", o: ["Egg cell", "Synergids", "Antipodal cells", "Anther wall layers"], a: 1 }
                     ]
                 }
             ]
         };
 
-        // User Tracker System Saved in Native Memory
-        let trackingData = JSON.parse(localStorage.getItem('study_vault_track')) || {};
+        let trackingData = JSON.parse(localStorage.getItem('study_vault_track_v2')) || {};
 
         function renderDashboard() {
             ['physics', 'chemistry', 'biology'].forEach(subject => {
@@ -357,8 +231,20 @@
                 zone.innerHTML = '';
                 
                 appDatabase[subject].forEach(ch => {
-                    const status = trackingData[ch.id] ? `<span style="color:var(--success-color); font-size:12px;"><i class="fa fa-check-circle"></i> Passed (${trackingData[ch.id]}%)</span>` : `<span style="color:#64748b; font-size:12px;"><i class="fa fa-circle"></i> Pending</span>`;
+                    const status = trackingData[ch.id] ? 
+                        `<span style="color:var(--success-color); font-size:12px; font-weight:600;"><i class="fa fa-check-circle"></i> Complete (${trackingData[ch.id]}%)</span>` : 
+                        `<span style="color:var(--warning-color); font-size:12px; font-weight:600;"><i class="fa fa-clock"></i> Unlocked</span>`;
                     
+                    let diagramBlock = '';
+                    if(ch.hasDiagram) {
+                        diagramBlock = `
+                            <div class="diagram-container">
+                                <span style="font-size:11px; font-weight:600; color:#475569;"><i class="fa fa-project-diagram"></i> Interactive Structure: ${ch.diagramTitle}</span><br>
+                                <div class="ascii-art-diagram">${ch.diagramData}</div>
+                            </div>
+                        `;
+                    }
+
                     const card = document.createElement('div');
                     card.className = 'chapter-card';
                     card.innerHTML = `
@@ -366,9 +252,10 @@
                             <div class="chapter-title">${ch.title}</div>
                             ${status}
                         </div>
+                        ${diagramBlock}
                         <div class="chapter-actions">
-                            <button class="btn btn-formula" onclick="openFormulas('${subject}', '${ch.id}')"><i class="fa fa-book-open"></i> Concept Sheet</button>
-                            <button class="btn btn-test" onclick="startNeetQuiz('${subject}', '${ch.id}')"><i class="fa fa-pen-to-square"></i> NEET Test</button>
+                            <button class="btn btn-formula" onclick="openFormulas('${subject}', '${ch.id}')"><i class="fa fa-book-open"></i> Formula Guide</button>
+                            <button class="btn btn-test" onclick="startNeetQuiz('${subject}', '${ch.id}')"><i class="fa fa-vial"></i> Take Test</button>
                         </div>
                     `;
                     zone.appendChild(card);
@@ -396,7 +283,7 @@
 
         function openFormulas(subject, chId) {
             const chapter = appDatabase[subject].find(c => c.id === chId);
-            document.getElementById('panel-title').innerText = chapter.title + " - Formulas";
+            document.getElementById('panel-title').innerText = chapter.title;
             const target = document.getElementById('formula-content-target');
             target.innerHTML = '';
             
@@ -409,11 +296,9 @@
             document.getElementById('formula-panel').style.display = 'flex';
         }
 
-        function closeFormulaPanel() {
-            document.getElementById('formula-panel').style.display = 'none';
-        }
+        function closeFormulaPanel() { document.getElementById('formula-panel').style.display = 'none'; }
 
-        // --- Premium Test Engine Logic with NEET Negative Marking System (+4 / -1) ---
+        // Core Exam State variables
         let currentQuizData = [];
         let currentQIdx = 0;
         let selectedOption = null;
@@ -425,14 +310,10 @@
         function startNeetQuiz(subject, chId) {
             const chapter = appDatabase[subject].find(c => c.id === chId);
             currentQuizData = chapter.questions;
-            if(!currentQuizData || currentQuizData.length === 0) {
-                alert("This chapter mockup test will be operational shortly!");
-                return;
-            }
             activeChId = chId;
             currentQIdx = 0;
             score = 0;
-            timeLeft = 600; 
+            timeLeft = 120; // 2 minutes strict simulation timer
             
             document.getElementById('quiz-engine').style.display = 'flex';
             startClockCounter();
@@ -459,11 +340,11 @@
             const qData = currentQuizData[currentQIdx];
             const arena = document.getElementById('question-arena');
             
-            document.getElementById('next-submit-btn').innerText = (currentQIdx === currentQuizData.length - 1) ? "Submit Test" : "Next Question";
+            document.getElementById('next-submit-btn').innerText = (currentQIdx === currentQuizData.length - 1) ? "Finish Test" : "Next Question";
             
             arena.innerHTML = `
-                <p style="font-size:14px; color:#64748b; margin-bottom:5px;">Question ${currentQIdx + 1} of ${currentQuizData.length}</p>
-                <h3 style="margin-bottom:20px; font-weight:600;">${qData.q}</h3>
+                <p style="font-size:13px; color:#64748b; font-weight:600; margin-bottom:10px;">Question ${currentQIdx + 1} of ${currentQuizData.length}</p>
+                <h3 style="margin-bottom:20px; font-weight:600; font-size:15px; color:#1e293b;">${qData.q}</h3>
                 <div id="options-block"></div>
             `;
             
@@ -483,11 +364,11 @@
 
         function processNextQuestion() {
             if(selectedOption === null) {
-                alert("Please select an option before moving forward!");
+                alert("Please select one response option to proceed!");
                 return;
             }
 
-            // NEET Evaluation Formula Rule Set (+4 Correct, -1 Incorrect)
+            // Real NEET marking system logic
             if(selectedOption === currentQuizData[currentQIdx].a) {
                 score += 4;
             } else {
@@ -508,18 +389,17 @@
             const maxScore = currentQuizData.length * 4;
             const percentage = Math.max(0, Math.round((score / maxScore) * 100));
             
-            // Native Memory me score tracking block add
             trackingData[activeChId] = percentage;
-            localStorage.setItem('study_vault_track', JSON.stringify(trackingData));
+            localStorage.setItem('study_vault_track_v2', JSON.stringify(trackingData));
             
             arena.innerHTML = `
                 <div class="scorecard">
-                    <i class="fa fa-award" style="font-size:64px; color:#eab308; margin-bottom:15px;"></i>
-                    <h2>Test Completed!</h2>
-                    <p style="color:#64748b; margin-top:5px; margin-bottom:20px;">NEET Scoring Metric Applied (+4 / -1)</p>
+                    <i class="fa fa-circle-check" style="font-size:60px; color:var(--success-color);"></i>
+                    <h2 style="margin-top:15px;">Evaluation Summary</h2>
+                    <p style="color:#64748b; font-size:12px;">NEET Marking Applied: (+4 Correct / -1 Wrong)</p>
                     <div class="score-metric">${score} / ${maxScore}</div>
-                    <p style="font-weight:500; margin-top:10px;">Accuracy: ${percentage}%</p>
-                    <button class="btn btn-test" style="margin-top:30px; max-width:200px;" onclick="exitQuiz()">Back to Dashboard</button>
+                    <p style="font-weight:600; color:#475569;">Syllabus Mastery: ${percentage}%</p>
+                    <button class="btn btn-test" style="margin-top:30px; max-width:220px;" onclick="exitQuiz()">Return to Terminal</button>
                 </div>
             `;
             document.getElementById('next-submit-btn').style.display = 'none';
@@ -532,7 +412,6 @@
             renderDashboard();
         }
 
-        // Initialize App on Startup
         renderDashboard();
     </script>
 </body>
