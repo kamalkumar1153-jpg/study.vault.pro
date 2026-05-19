@@ -1,25 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Study Vault Pro - Ultimate NEET Edition</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --primary-color: #1e40af;
-            --secondary-color: #2563eb;
-            --success-color: #16a34a;
-            --danger-color: #dc2626;
-            --warning-color: #d97706;
-            --bg-color: #f1f5f9;
-            --card-color: #ffffff;
-            --text-dark: #0f172a;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+ding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         body { background-color: var(--bg-color); color: var(--text-dark); padding-bottom: 30px; }
 
         .header {
@@ -121,120 +100,106 @@
             <span id="quiz-title" style="font-weight:700; font-size: 15px;">NEET Mock Arena</span>
             <div class="timer-badge"><i class="fa fa-clock"></i> <span id="clock">10:00</span></div>
         </div>
-        <div class="question-box" id="question-arena"></div>
-        <div class="quiz-footer">
-            <button class="btn" style="background:#64748b; color:white; max-width:90px;" onclick="exitQuiz()">Quit</button>
-            <button class="btn btn-test" style="max-width:160px;" id="next-submit-btn" onclick="processNextQuestion()">Next Question</button>
-        </div>
-    </div>
-
-    <script>
-        // Full High Definition Vectors and Detailed NEET Content Arrays
-        const appDatabase = {
-            physics: [
+        <div cs: [
                 {
                     id: "p1",
                     title: "Electrostatics: Electric Charges and Fields",
                     formulas: [
-                        "Coulomb's Law Vector: F = 1/(4πε₀) * (q₁q₂)/r²",
+                       "Coulomb's Law Vector: F = 1/(4πε₀) * (q₁q₂)/r²",
                         "Electric Field Strength: E = F / q_test",
                         "Dipole Moment Configuration: p = q * (2a)",
                         "Gauss Flux Law: Φ = ∮ E · dA = Q_enclosed / ε₀"
-                    ],
-                    hasDiagram: true,
+                               hasDiagram: true,
                     diagramTitle: "Electric Dipole Field Lines Representation",
                     diagramSVG: `<svg class="diagram-wrapper-svg" width="240" height="120" viewBox="0 0 240 120">
                         <circle cx="60" cy="60" r="18" fill="#ef4444"/>
-                        <text x="55" y="65" fill="white" font-weight="bold">+</text>
+                       <text x="55" y="65" fill="white" font-weight="bold">+</text>
                         <circle cx="180" cy="60" r="18" fill="#3b82f6"/>
                         <text x="176" y="65" fill="white" font-weight="bold">-</text>
                         <path d="M 78,60 C 110,30 130,30 162,60" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
-                        <path d="M 78,60 C 110,90 130,90 162,60" stroke="#64748b" stroke-width="2" fill="none"/>
+                 <path d="M 78,60 C 110,90 130,90 162,60" stroke="#64748b" stroke-width="2" fill="none"/>
                         <line x1="78" y1="60" x2="162" y2="60" stroke="#64748b" stroke-width="2"/>
                     </svg>`,
                     questions: [
-                        { q: "What is the direction of an electric dipole moment vector?", o: ["From positive to negative charge", "From negative to positive charge", "Perpendicular to axis", "Radial outwards"], a: 1 },
+                       { q: "What is the direction of an electric dipole moment vector?", o: ["From positive to negative charge", "From negative to positive charge", "Perpendicular to axis", "Radial outwards"], a: 1 },
                         { q: "If dielectric constant of a medium increases, the force between charges:", o: ["Increases", "Decreases", "Remains Constant", "Becomes Zero"], a: 1 }
                     ]
                 }
             ],
-            chemistry: [
+            chemi
                 {
                     id: "c1",
                     title: "Solutions & Colligative Properties",
                     formulas: [
                         "Molarity (M): Moles of Solute / Volume of Solution (L)",
-                        "Molality (m): Moles of Solute / Mass of Solvent (kg)",
-                        "Raoult's Law (Vapour Pressure): P = P° * X_solvent",
+                        "Molality (m): Moles of Solute / Mass of Solvent (kg)",                        "Raoult's Law (Vapour Pressure): P = P° * X_solvent",
                         "Van 't Hoff Factor Multiplier: i = Total moles after association/dissociation"
                     ],
                     hasDiagram: true,
-                    diagramTitle: "Semipermeable Membrane Osmosis Setup",
+            diagramTitle: "Semipermeable Membrane Osmosis Setup",
                     diagramSVG: `<svg class="diagram-wrapper-svg" width="240" height="120" viewBox="0 0 240 120">
                         <rect x="20" y="20" width="200" height="80" fill="none" stroke="#0f172a" stroke-width="2"/>
                         <line x1="120" y1="20" x2="120" y2="100" stroke="#ef4444" stroke-width="2" stroke-dasharray="4"/>
                         <text x="35" y="55" font-size="11" fill="#1e40af">Pure Solvent</text>
-                        <text x="135" y="55" font-size="11" fill="#1e40af">Solution Zone</text>
+                       <text x="135" y="55" font-size="11" fill="#1e40af">Solution Zone</text>
                         <text x="95" y="15" font-size="10" fill="#dc2626" font-weight="bold">SPM Membrane</text>
                     </svg>`,
                     questions: [
                         { q: "Which concentration term remains completely unaltered during a temperature rise?", o: ["Molarity", "Normality", "Molality", "Formality"], a: 2 }
-                    ]
+           ]
                 }
             ],
             biology: [
                 {
                     id: "b1",
-                    title: "Anatomy: Sexual Reproduction in Flowering Plants",
+                   title: "Anatomy: Sexual Reproduction in Flowering Plants",
                     formulas: [
                         "💡 Focus point: Highly critical structural details of 7-Celled & 8-Nucleate Embryo Sac structure.",
                         "Microsporogenesis Matrix: 1 Pollen Mother Cell yields 4 microspores via meiotic division cycle."
-                    ],
-                    hasDiagram: true,
+                                 hasDiagram: true,
                     diagramTitle: "Anatropous Ovule Embryo Sac Layout",
                     diagramSVG: `<svg class="diagram-wrapper-svg" width="240" height="140" viewBox="0 0 240 140">
                         <rect x="50" y="10" width="140" height="120" rx="30" fill="none" stroke="#16a34a" stroke-width="2"/>
-                        <circle cx="120" cy="35" r="8" fill="#db2777"/><circle cx="100" cy="35" r="8" fill="#db2777"/><circle cx="140" cy="35" r="8" fill="#db2777"/>
+                       <circle cx="120" cy="35" r="8" fill="#db2777"/><circle cx="100" cy="35" r="8" fill="#db2777"/><circle cx="140" cy="35" r="8" fill="#db2777"/>
                         <circle cx="110" cy="70" r="6" fill="#2563eb"/><circle cx="130" cy="70" r="6" fill="#2563eb"/>
                         <circle cx="120" cy="105" r="9" fill="#ea580c"/><circle cx="95" cy="105" r="7" fill="#db2777"/><circle cx="145" cy="105" r="7" fill="#db2777"/>
                         <text x="165" y="40" font-size="10" fill="#475569">Antipodals</text>
-                        <text x="165" y="110" font-size="10" fill="#475569">Egg Cell</text>
+               <text x="165" y="110" font-size="10" fill="#475569">Egg Cell</text>
                     </svg>`,
                     questions: [
                         { q: "Filiform apparatus structure plays a crucial role in directing the pollen tube into:", o: ["Antipodals", "Synergids", "Central Cell", "Generative Core"], a: 1 }
                     ]
-                }
+                
             ]
         };
 
         let trackingData = JSON.parse(localStorage.getItem('study_vault_track_v3')) || {};
 
-        function renderDashboard() {
+        function renderDash
             ['physics', 'chemistry', 'biology'].forEach(subject => {
                 const zone = document.getElementById(subject);
                 zone.innerHTML = '';
                 
-                appDatabase[subject].forEach(ch => {
+                appDatabase[subject].orEach(ch => {
                     const status = trackingData[ch.id] ? 
                         `<span style="color:var(--success-color); font-size:12px; font-weight:600;"><i class="fa fa-check-circle"></i> Mastery (${trackingData[ch.id]}%)</span>` : 
                         `<span style="color:var(--warning-color); font-size:12px; font-weight:600;"><i class="fa fa-unlock"></i> Ready</span>`;
                     
                     let diagramBlock = '';
                     if(ch.hasDiagram) {
-                        diagramBlock = `
-                            <div class="diagram-container">
+                        diagramBlock =                    <div class="diagram-container">
                                 <span style="font-size:11px; font-weight:600; color:#475569;"><i class="fa fa-image"></i> NEET High-Yield Layout: ${ch.diagramTitle}</span>
                                 ${ch.diagramSVG}
                             </div>
                         `;
                     }
 
-                    const card = document.createElement('div');
+                   const card = document.createElement('div');
                     card.className = 'chapter-card';
                     card.innerHTML = `
-                        <div style="display:flex; justify-content:space-between; align-items:center;">
+               <div style="display:flex; justify-content:space-between; align-items:center;">
                             <div class="chapter-title">${ch.title}</div>
-                            ${status}
+                           ${status}
                         </div>
                         ${diagramBlock}
                         <div class="chapter-actions">
@@ -243,159 +208,25 @@
                         </div>
                     `;
                     zone.appendChild(card);
-                });
-            });
+                });    });
             updateProgressBar();
-        }
+        
 
         function switchSubject(sub) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active'));
-            
-            event.target.classList.add('active');
+              event.target.classList.add('active');
             document.getElementById(sub).classList.add('active');
         }
 
-        function updateProgressBar() {
+        fnction updateProgressBar() {
             const totalChapters = appDatabase.physics.length + appDatabase.chemistry.length + appDatabase.biology.length;
             const completed = Object.keys(trackingData).length;
             const percentage = totalChapters > 0 ? Math.round((completed / totalChapters) * 100) : 0;
-            
-            document.getElementById('main-progress').style.width = percentage + '%';
+             document.getElementById('main-progress').style.width = percentage + '%';
             document.getElementById('progress-text').innerText = percentage + '%';
         }
-
         function openFormulas(subject, chId) {
             const chapter = appDatabase[subject].find(c => c.id === chId);
             document.getElementById('panel-title').innerText = chapter.title;
-            const target = document.getElementById('formula-content-target');
-            target.innerHTML = '';
-            
-            chapter.formulas.forEach(f => {
-                const div = document.createElement('div');
-                div.className = 'formula-item';
-                div.innerText = f;
-                target.appendChild(div);
-            });
-            document.getElementById('formula-panel').style.display = 'flex';
-        }
-
-        function closeFormulaPanel() { document.getElementById('formula-panel').style.display = 'none'; }
-
-        // Test Engine Control Variables
-        let currentQuizData = [];
-        let currentQIdx = 0;
-        let selectedOption = null;
-        let score = 0;
-        let quizTimer = null;
-        let timeLeft = 600; 
-        let activeChId = "";
-
-        function startNeetQuiz(subject, chId) {
-            const chapter = appDatabase[subject].find(c => c.id === chId);
-            currentQuizData = chapter.questions;
-            activeChId = chId;
-            currentQIdx = 0;
-            score = 0;
-            timeLeft = 120; // 2 Minutes Test Speed Simulator
-            
-            document.getElementById('quiz-engine').style.display = 'flex';
-            startClockCounter();
-            loadQuestion();
-        }
-
-        function startClockCounter() {
-            clearInterval(quizTimer);
-            quizTimer = setInterval(() => {
-                timeLeft--;
-                let mins = Math.floor(timeLeft / 60);
-                let secs = timeLeft % 60;
-                document.getElementById('clock').innerText = `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-                
-                if(timeLeft <= 0) {
-                    clearInterval(quizTimer);
-                    evaluateFinalScore();
-                }
-            }, 1000);
-        }
-
-        function loadQuestion() {
-            selectedOption = null;
-            const qData = currentQuizData[currentQIdx];
-            const arena = document.getElementById('question-arena');
-            
-            document.getElementById('next-submit-btn').innerText = (currentQIdx === currentQuizData.length - 1) ? "Finish Test" : "Next Question";
-            
-            arena.innerHTML = `
-                <p style="font-size:13px; color:#64748b; font-weight:600; margin-bottom:10px;">Question ${currentQIdx + 1} of ${currentQuizData.length}</p>
-                <h3 style="margin-bottom:20px; font-weight:600; font-size:15px; color:#1e293b;">${qData.q}</h3>
-                <div id="options-block"></div>
-            `;
-            
-            const optBlock = document.getElementById('options-block');
-            qData.o.forEach((opt, index) => {
-                const optCard = document.createElement('div');
-                optCard.className = 'option-card';
-                optCard.innerText = opt;
-                optCard.onclick = () => {
-                    document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
-                    optCard.classList.add('selected');
-                    selectedOption = index;
-                };
-                optBlock.appendChild(optCard);
-            });
-        }
-
-        function processNextQuestion() {
-            if(selectedOption === null) {
-                alert("Please select an option before moving to next screen.");
-                return;
-            }
-
-            if(selectedOption === currentQuizData[currentQIdx].a) {
-                score += 4;
-            } else {
-                score -= 1;
-            }
-
-            if(currentQIdx < currentQuizData.length - 1) {
-                currentQIdx++;
-                loadQuestion();
-            } else {
-                clearInterval(quizTimer);
-                evaluateFinalScore();
-            }
-        }
-
-        function evaluateFinalScore() {
-            const arena = document.getElementById('question-arena');
-            const maxScore = currentQuizData.length * 4;
-            const percentage = Math.max(0, Math.round((score / maxScore) * 100));
-            
-            trackingData[activeChId] = percentage;
-            localStorage.setItem('study_vault_track_v3', JSON.stringify(trackingData));
-            
-            arena.innerHTML = `
-                <div class="scorecard">
-                    <i class="fa fa-circle-check" style="font-size:60px; color:var(--success-color);"></i>
-                    <h2 style="margin-top:15px;">Result Sheet</h2>
-                    <p style="color:#64748b; font-size:12px;">Scoring Metric: (+4 Correct / -1 Wrong)</p>
-                    <div class="score-metric">${score} / ${maxScore}</div>
-                    <p style="font-weight:600; color:#475569;">Syllabus Mastery: ${percentage}%</p>
-                    <button class="btn btn-test" style="margin-top:30px; max-width:220px;" onclick="exitQuiz()">Back to Dashboard</button>
-                </div>
-            `;
-            document.getElementById('next-submit-btn').style.display = 'none';
-        }
-
-        function exitQuiz() {
-            clearInterval(quizTimer);
-            document.getElementById('quiz-engine').style.display = 'none';
-            document.getElementById('next-submit-btn').style.display = 'block';
-            renderDashboard();
-        }
-
-        renderDashboard();
-    </script>
-</body>
-</html>
+            const target = document.getElementById('formula-co
