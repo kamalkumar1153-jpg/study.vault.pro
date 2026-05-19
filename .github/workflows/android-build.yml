@@ -30,8 +30,10 @@ jobs:
         run: |
           npm install
 
-      - name: Sync Capacitor Android
+      - name: Add and Sync Android Platform
         run: |
+          # Cloud par fresh android directory structure create karein
+          npx cap add android || true
           npx cap sync android
 
       - name: Build App Bundle (.aab) via Gradle
