@@ -54,24 +54,20 @@
         .btn { flex: 1; padding: 12px; border: none; border-radius: 8px; font-weight: 600; font-size: 13px; cursor: pointer; text-align: center; transition: 0.2s; }
         .btn-formula { background: #eff6ff; color: var(--secondary-color); border: 1px solid #bfdbfe; }
         .btn-test { background: var(--secondary-color); color: white; }
-        .btn-test:hover { background: var(--primary-color); }
 
-        /* Diagrams Styling Box */
+        /* Advanced Vector/Structural SVG Diagram Container */
         .diagram-container {
-            background: #f8fafc; border: 1px dashed #cbd5e1;
-            padding: 15px; border-radius: 8px; margin-top: 10px; text-align: center;
+            background: #f8fafc; border: 1px solid #e2e8f0;
+            padding: 15px; border-radius: 12px; margin-top: 12px; text-align: center;
         }
-        .ascii-art-diagram {
-            font-family: monospace; font-size: 11px; white-space: pre;
-            background: #0f172a; color: #38bdf8; padding: 10px;
-            border-radius: 6px; display: inline-block; text-align: left;
-            max-width: 100%; overflow-x: auto; margin: 8px 0;
+        .diagram-wrapper-svg {
+            max-width: 100%; height: auto; margin: 10px auto; display: block;
         }
 
-        /* Engine Overlay */
+        /* NEET Engine Overlay System */
         .quiz-container { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--bg-color); z-index: 1000; display: none; flex-direction: column; }
         .quiz-header { background: #0f172a; color: white; padding: 18px; display: flex; justify-content: space-between; align-items: center; }
-        .timer-badge { background: var(--danger-color); padding: 6px 14px; border-radius: 20px; font-weight: 700; letter-spacing: 0.5px; }
+        .timer-badge { background: var(--danger-color); padding: 6px 14px; border-radius: 20px; font-weight: 700; }
         .question-box { padding: 20px; background: white; margin: 15px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); flex-grow: 1; overflow-y: auto; }
         
         .option-card { padding: 14px; border: 2px solid #e2e8f0; border-radius: 8px; margin-top: 12px; cursor: pointer; transition: 0.2s; font-weight: 500; }
@@ -79,7 +75,7 @@
         .quiz-footer { padding: 15px; background: white; display: flex; justify-content: space-between; border-top: 1px solid #e2e8f0; }
 
         .modal-view { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: white; z-index: 999; display: none; flex-direction: column; padding: 20px; overflow-y: auto; }
-        .formula-item { background: #f8fafc; padding: 15px; border-left: 5px solid var(--secondary-color); border-radius: 6px; margin-bottom: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .formula-item { background: #f8fafc; padding: 15px; border-left: 5px solid var(--secondary-color); border-radius: 6px; margin-bottom: 12px; }
         .close-btn { align-self: flex-end; background: #475569; color: white; padding: 8px 20px; border-radius: 6px; border: none; margin-bottom: 15px; font-weight: 600; }
         .scorecard { text-align: center; padding: 40px 10px; }
         .score-metric { font-size: 52px; color: var(--primary-color); font-weight: 800; margin: 15px 0; }
@@ -89,7 +85,7 @@
 
     <div class="header">
         <h2>Study Vault Pro</h2>
-        <p style="font-size: 13px; opacity: 0.9; font-weight: 300;">PC&B Complete Master Dashboard • NEET 2026</p>
+        <p style="font-size: 13px; opacity: 0.9; font-weight: 300;">PC&B Complete Master Dashboard • NEET Edition</p>
     </div>
 
     <div class="overall-progress-card">
@@ -133,97 +129,85 @@
     </div>
 
     <script>
-        // High Yield Complete Interactive NEET Syllabus Data
+        // Full High Definition Vectors and Detailed NEET Content Arrays
         const appDatabase = {
             physics: [
                 {
                     id: "p1",
                     title: "Electrostatics: Electric Charges and Fields",
                     formulas: [
-                        "Coulomb's Force Formula: F = 1/(4πε₀) * (q₁q₂)/r²",
-                        "Electric Field due to Point Charge: E = 1/(4πε₀) * q/r²",
-                        "Electric Dipole Moment Vector: p = q * (2a)",
-                        "Torque on a Dipole in Uniform Field: τ = p x E = pE sin(θ)",
-                        "Gauss's Law Closed Integral: ∮ E · dA = q_enclosed / ε₀"
+                        "Coulomb's Law Vector: F = 1/(4πε₀) * (q₁q₂)/r²",
+                        "Electric Field Strength: E = F / q_test",
+                        "Dipole Moment Configuration: p = q * (2a)",
+                        "Gauss Flux Law: Φ = ∮ E · dA = Q_enclosed / ε₀"
                     ],
                     hasDiagram: true,
-                    diagramTitle: "Electric Dipole Alignment Vector",
-                    diagramData: "   (+q) -------- p --------> (-q)\n     |                        |\n     +------> E Field ------->+",
+                    diagramTitle: "Electric Dipole Field Lines Representation",
+                    diagramSVG: `<svg class="diagram-wrapper-svg" width="240" height="120" viewBox="0 0 240 120">
+                        <circle cx="60" cy="60" r="18" fill="#ef4444"/>
+                        <text x="55" y="65" fill="white" font-weight="bold">+</text>
+                        <circle cx="180" cy="60" r="18" fill="#3b82f6"/>
+                        <text x="176" y="65" fill="white" font-weight="bold">-</text>
+                        <path d="M 78,60 C 110,30 130,30 162,60" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+                        <path d="M 78,60 C 110,90 130,90 162,60" stroke="#64748b" stroke-width="2" fill="none"/>
+                        <line x1="78" y1="60" x2="162" y2="60" stroke="#64748b" stroke-width="2"/>
+                    </svg>`,
                     questions: [
-                        { q: "What is the direction of an electric dipole moment vector?", o: ["From positive to negative charge", "From negative to positive charge", "Perpendicular to the line joining them", "Always random direction"], a: 1 },
-                        { q: "If the distance between two point charges is doubled, the electrostatic force between them becomes:", o: ["Double", "Half", "Four times", "One-fourth"], a: 3 }
-                    ]
-                },
-                {
-                    id: "p2",
-                    title: "Current Electricity",
-                    formulas: [
-                        "Ohm's Core Relation Vector: V = I * R  or  J = σE",
-                        "Drift Velocity Equation: v_d = (e * E * τ) / m",
-                        "Temperature Dependency: R_t = R_₀[1 + α(T - T_₀)]",
-                        "Kirchhoff's Current Law (KCL): ∑ I = 0 (Charge Conservation)",
-                        "Kirchhoff's Voltage Law (KVL): ∑ ΔV = 0 (Energy Conservation)"
-                    ],
-                    hasDiagram: false,
-                    questions: [
-                        { q: "Kirchhoff's first law (∑ I = 0) at a junction is based on the law of conservation of:", o: ["Charge", "Energy", "Momentum", "Mass"], a: 0 }
+                        { q: "What is the direction of an electric dipole moment vector?", o: ["From positive to negative charge", "From negative to positive charge", "Perpendicular to axis", "Radial outwards"], a: 1 },
+                        { q: "If dielectric constant of a medium increases, the force between charges:", o: ["Increases", "Decreases", "Remains Constant", "Becomes Zero"], a: 1 }
                     ]
                 }
             ],
             chemistry: [
                 {
                     id: "c1",
-                    title: "Physical Chemistry: Solutions",
+                    title: "Solutions & Colligative Properties",
                     formulas: [
-                        "Molarity Metric (M): M = (Moles of Solute) / (Volume of Solution in Liters)",
-                        "Molality Metric (m): m = (Moles of Solute) / (Mass of Solvent in kg)",
-                        "Raoult's Law for Volatile Liquids: P_total = P_A° * X_A + P_B° * X_B",
-                        "Elevation of Boiling Point: ΔT_b = i * K_f * m",
-                        "Osmotic Pressure Formula Grid: π = i * C * R * T"
-                    ],
-                    hasDiagram: false,
-                    questions: [
-                        { q: "Which property is NOT a colligative property?", o: ["Osmotic pressure", "Elevation of boiling point", "Vapour pressure", "Depression of freezing point"], a: 2 }
-                    ]
-                },
-                {
-                    id: "c2",
-                    title: "Chemical Kinetics",
-                    formulas: [
-                        "Rate Law expression: Rate = k [A]^x [B]^y",
-                        "Integrated Rate Law (First Order): k = (2.303 / t) * log( [A]₀ / [A] )",
-                        "Half-life period (First Order): t_1/2 = 0.693 / k",
-                        "Arrhenius Activation Equation: k = A * e^(-E_a / RT)"
+                        "Molarity (M): Moles of Solute / Volume of Solution (L)",
+                        "Molality (m): Moles of Solute / Mass of Solvent (kg)",
+                        "Raoult's Law (Vapour Pressure): P = P° * X_solvent",
+                        "Van 't Hoff Factor Multiplier: i = Total moles after association/dissociation"
                     ],
                     hasDiagram: true,
-                    diagramTitle: "Activation Energy Profile Chart",
-                    diagramData: " Energy^\n        |    _/_\\_  <-- Transition State\n        |   /     \\\n        |--/React  \\___Prod\n        +-------------------> Reaction Coordinate",
+                    diagramTitle: "Semipermeable Membrane Osmosis Setup",
+                    diagramSVG: `<svg class="diagram-wrapper-svg" width="240" height="120" viewBox="0 0 240 120">
+                        <rect x="20" y="20" width="200" height="80" fill="none" stroke="#0f172a" stroke-width="2"/>
+                        <line x1="120" y1="20" x2="120" y2="100" stroke="#ef4444" stroke-width="2" stroke-dasharray="4"/>
+                        <text x="35" y="55" font-size="11" fill="#1e40af">Pure Solvent</text>
+                        <text x="135" y="55" font-size="11" fill="#1e40af">Solution Zone</text>
+                        <text x="95" y="15" font-size="10" fill="#dc2626" font-weight="bold">SPM Membrane</text>
+                    </svg>`,
                     questions: [
-                        { q: "The half-life of a first-order reaction depends heavily on which metric?", o: ["Initial concentration", "Temperature / Rate Constant k", "Volume of reactor vessel", "Catalyst surface dimensions"], a: 1 }
+                        { q: "Which concentration term remains completely unaltered during a temperature rise?", o: ["Molarity", "Normality", "Molality", "Formality"], a: 2 }
                     ]
                 }
             ],
             biology: [
                 {
                     id: "b1",
-                    title: "Reproduction: Sexual Reproduction in Flowering Plants",
+                    title: "Anatomy: Sexual Reproduction in Flowering Plants",
                     formulas: [
-                        "💡 NEET Key: Focus heavily on the 7-celled, 8-nucleate structure of the mature Embryo Sac.",
-                        "Microsporogenesis: 1 Pollen Mother Cell (PMC) -> 4 Functional Haploid Pollen Grains.",
-                        "Megasporogenesis: 1 Megaspore Mother Cell (MMC) -> 4 Megaspores -> 3 Degenerate, 1 Functional."
+                        "💡 Focus point: Highly critical structural details of 7-Celled & 8-Nucleate Embryo Sac structure.",
+                        "Microsporogenesis Matrix: 1 Pollen Mother Cell yields 4 microspores via meiotic division cycle."
                     ],
                     hasDiagram: true,
-                    diagramTitle: "7-Celled 8-Nucleate Embryo Sac",
-                    diagramData: "   [ Chalazal End: 3 Antipodal Cells ]\n         (  O   O   O  )\n         (      OO     ) <-- Central Cell (2 Polar Nuclei)\n         (  O   O   O  )\n   [ Micropylar End: 2 Synergids + 1 Egg Cell ]",
+                    diagramTitle: "Anatropous Ovule Embryo Sac Layout",
+                    diagramSVG: `<svg class="diagram-wrapper-svg" width="240" height="140" viewBox="0 0 240 140">
+                        <rect x="50" y="10" width="140" height="120" rx="30" fill="none" stroke="#16a34a" stroke-width="2"/>
+                        <circle cx="120" cy="35" r="8" fill="#db2777"/><circle cx="100" cy="35" r="8" fill="#db2777"/><circle cx="140" cy="35" r="8" fill="#db2777"/>
+                        <circle cx="110" cy="70" r="6" fill="#2563eb"/><circle cx="130" cy="70" r="6" fill="#2563eb"/>
+                        <circle cx="120" cy="105" r="9" fill="#ea580c"/><circle cx="95" cy="105" r="7" fill="#db2777"/><circle cx="145" cy="105" r="7" fill="#db2777"/>
+                        <text x="165" y="40" font-size="10" fill="#475569">Antipodals</text>
+                        <text x="165" y="110" font-size="10" fill="#475569">Egg Cell</text>
+                    </svg>`,
                     questions: [
-                        { q: "How many functional megaspores survive inside a normal angiosperm ovule after meiosis?", o: ["4", "3", "2", "1"], a: 3 },
-                        { q: "Filiform apparatus is a highly characteristic feature of which component?", o: ["Egg cell", "Synergids", "Antipodal cells", "Anther wall layers"], a: 1 }
+                        { q: "Filiform apparatus structure plays a crucial role in directing the pollen tube into:", o: ["Antipodals", "Synergids", "Central Cell", "Generative Core"], a: 1 }
                     ]
                 }
             ]
         };
 
-        let trackingData = JSON.parse(localStorage.getItem('study_vault_track_v2')) || {};
+        let trackingData = JSON.parse(localStorage.getItem('study_vault_track_v3')) || {};
 
         function renderDashboard() {
             ['physics', 'chemistry', 'biology'].forEach(subject => {
@@ -232,15 +216,15 @@
                 
                 appDatabase[subject].forEach(ch => {
                     const status = trackingData[ch.id] ? 
-                        `<span style="color:var(--success-color); font-size:12px; font-weight:600;"><i class="fa fa-check-circle"></i> Complete (${trackingData[ch.id]}%)</span>` : 
-                        `<span style="color:var(--warning-color); font-size:12px; font-weight:600;"><i class="fa fa-clock"></i> Unlocked</span>`;
+                        `<span style="color:var(--success-color); font-size:12px; font-weight:600;"><i class="fa fa-check-circle"></i> Mastery (${trackingData[ch.id]}%)</span>` : 
+                        `<span style="color:var(--warning-color); font-size:12px; font-weight:600;"><i class="fa fa-unlock"></i> Ready</span>`;
                     
                     let diagramBlock = '';
                     if(ch.hasDiagram) {
                         diagramBlock = `
                             <div class="diagram-container">
-                                <span style="font-size:11px; font-weight:600; color:#475569;"><i class="fa fa-project-diagram"></i> Interactive Structure: ${ch.diagramTitle}</span><br>
-                                <div class="ascii-art-diagram">${ch.diagramData}</div>
+                                <span style="font-size:11px; font-weight:600; color:#475569;"><i class="fa fa-image"></i> NEET High-Yield Layout: ${ch.diagramTitle}</span>
+                                ${ch.diagramSVG}
                             </div>
                         `;
                     }
@@ -254,8 +238,8 @@
                         </div>
                         ${diagramBlock}
                         <div class="chapter-actions">
-                            <button class="btn btn-formula" onclick="openFormulas('${subject}', '${ch.id}')"><i class="fa fa-book-open"></i> Formula Guide</button>
-                            <button class="btn btn-test" onclick="startNeetQuiz('${subject}', '${ch.id}')"><i class="fa fa-vial"></i> Take Test</button>
+                            <button class="btn btn-formula" onclick="openFormulas('${subject}', '${ch.id}')"><i class="fa fa-book-open"></i> Formula Sheet</button>
+                            <button class="btn btn-test" onclick="startNeetQuiz('${subject}', '${ch.id}')"><i class="fa fa-vial"></i> Mock Test</button>
                         </div>
                     `;
                     zone.appendChild(card);
@@ -298,7 +282,7 @@
 
         function closeFormulaPanel() { document.getElementById('formula-panel').style.display = 'none'; }
 
-        // Core Exam State variables
+        // Test Engine Control Variables
         let currentQuizData = [];
         let currentQIdx = 0;
         let selectedOption = null;
@@ -313,7 +297,7 @@
             activeChId = chId;
             currentQIdx = 0;
             score = 0;
-            timeLeft = 120; // 2 minutes strict simulation timer
+            timeLeft = 120; // 2 Minutes Test Speed Simulator
             
             document.getElementById('quiz-engine').style.display = 'flex';
             startClockCounter();
@@ -364,11 +348,10 @@
 
         function processNextQuestion() {
             if(selectedOption === null) {
-                alert("Please select one response option to proceed!");
+                alert("Please select an option before moving to next screen.");
                 return;
             }
 
-            // Real NEET marking system logic
             if(selectedOption === currentQuizData[currentQIdx].a) {
                 score += 4;
             } else {
@@ -390,16 +373,16 @@
             const percentage = Math.max(0, Math.round((score / maxScore) * 100));
             
             trackingData[activeChId] = percentage;
-            localStorage.setItem('study_vault_track_v2', JSON.stringify(trackingData));
+            localStorage.setItem('study_vault_track_v3', JSON.stringify(trackingData));
             
             arena.innerHTML = `
                 <div class="scorecard">
                     <i class="fa fa-circle-check" style="font-size:60px; color:var(--success-color);"></i>
-                    <h2 style="margin-top:15px;">Evaluation Summary</h2>
-                    <p style="color:#64748b; font-size:12px;">NEET Marking Applied: (+4 Correct / -1 Wrong)</p>
+                    <h2 style="margin-top:15px;">Result Sheet</h2>
+                    <p style="color:#64748b; font-size:12px;">Scoring Metric: (+4 Correct / -1 Wrong)</p>
                     <div class="score-metric">${score} / ${maxScore}</div>
                     <p style="font-weight:600; color:#475569;">Syllabus Mastery: ${percentage}%</p>
-                    <button class="btn btn-test" style="margin-top:30px; max-width:220px;" onclick="exitQuiz()">Return to Terminal</button>
+                    <button class="btn btn-test" style="margin-top:30px; max-width:220px;" onclick="exitQuiz()">Back to Dashboard</button>
                 </div>
             `;
             document.getElementById('next-submit-btn').style.display = 'none';
