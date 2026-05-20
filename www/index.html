@@ -1,232 +1,95 @@
-ding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-dark); padding-bottom: 30px; }
-
-        .header {
-            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-            color: white; padding: 25px 20px;
-            border-bottom-right-radius: 25px; border-bottom-left-radius: 25px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .overall-progress-card {
-            background: var(--card-color); margin: -15px 15px 20px 15px;
-            padding: 20px; border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
-
-        .progress-info { display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: 600; }
-        .progress-bar-container { background-color: #e2e8f0; border-radius: 10px; height: 14px; overflow: hidden; }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Vault Pro</title>
+    <style>
+        * { box-sizing: border-box; font-family: 'Poppins', sans-serif; margin: 0; padding: 0; }
+        body { background-color: #f4f7f6; color: #333; padding-bottom: 30px; }
+        .header { background: linear-gradient(135deg, #1e3a8a, #3b82f6); color: white; padding: 25px 20px; border-bottom-right-radius: 25px; border-bottom-left-radius: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; }
+        .main-container { padding: 15px; }
+        .overall-progress-card { background: white; margin: -15px 15px 20px 15px; padding: 20px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); text-align: center; }
+        .progress-bar-container { background-color: #e2e8f0; border-radius: 10px; height: 14px; overflow: hidden; margin-top: 10px; }
         .progress-bar { background: linear-gradient(90deg, #10b981, #059669); height: 100%; width: 0%; transition: width 0.5s ease; }
-
-        .subject-tabs { display: flex; justify-content: space-around; margin: 15px; background: #cbd5e1; padding: 6px; border-radius: 14px; }
-        .tab-btn { flex: 1; padding: 12px; border: none; background: none; font-weight: 700; color: #475569; border-radius: 10px; cursor: pointer; transition: 0.3s; }
-        .tab-btn.active { background: var(--card-color); color: var(--primary-color); box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-
-        .main-container { padding: 10px 15px; }
+        .subject-tabs { display: flex; justify-content: space-around; margin-bottom: 15px; background: #cbd5e1; padding: 6px; border-radius: 14px; }
+        .tab-btn { flex: 1; padding: 12px; border: none; background: none; font-weight: 700; color: #475569; border-radius: 10px; cursor: pointer; transition: 0.3s; text-align: center; }
+        .tab-btn.active { background: white; color: #1e3a8a; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         .view-section { display: none; }
         .view-section.active { display: block; }
-
-        .chapter-card { background: var(--card-color); border-radius: 15px; padding: 20px; margin-bottom: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; }
-        .chapter-title { font-size: 16px; font-weight: 600; color: #1e293b; }
-        .chapter-actions { display: flex; gap: 10px; margin-top: 15px; }
-        
+        .chapter-card { background: white; border-radius: 15px; padding: 20px; margin-bottom: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; }
+        .chapter-title { font-size: 16px; font-weight: 600; color: #1e293b; margin-bottom: 12px; }
+        .chapter-actions { display: flex; gap: 10px; }
         .btn { flex: 1; padding: 12px; border: none; border-radius: 8px; font-weight: 600; font-size: 13px; cursor: pointer; text-align: center; transition: 0.2s; }
-        .btn-formula { background: #eff6ff; color: var(--secondary-color); border: 1px solid #bfdbfe; }
-        .btn-test { background: var(--secondary-color); color: white; }
-
-        /* Advanced Vector/Structural SVG Diagram Container */
-        .diagram-container {
-            background: #f8fafc; border: 1px solid #e2e8f0;
-            padding: 15px; border-radius: 12px; margin-top: 12px; text-align: center;
-        }
-        .diagram-wrapper-svg {
-            max-width: 100%; height: auto; margin: 10px auto; display: block;
-        }
-
-        /* NEET Engine Overlay System */
-        .quiz-container { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--bg-color); z-index: 1000; display: none; flex-direction: column; }
-        .quiz-header { background: #0f172a; color: white; padding: 18px; display: flex; justify-content: space-between; align-items: center; }
-        .timer-badge { background: var(--danger-color); padding: 6px 14px; border-radius: 20px; font-weight: 700; }
-        .question-box { padding: 20px; background: white; margin: 15px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); flex-grow: 1; overflow-y: auto; }
-        
-        .option-card { padding: 14px; border: 2px solid #e2e8f0; border-radius: 8px; margin-top: 12px; cursor: pointer; transition: 0.2s; font-weight: 500; }
-        .option-card.selected { border-color: var(--secondary-color); background: #eff6ff; }
-        .quiz-footer { padding: 15px; background: white; display: flex; justify-content: space-between; border-top: 1px solid #e2e8f0; }
-
-        .modal-view { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: white; z-index: 999; display: none; flex-direction: column; padding: 20px; overflow-y: auto; }
-        .formula-item { background: #f8fafc; padding: 15px; border-left: 5px solid var(--secondary-color); border-radius: 6px; margin-bottom: 12px; }
-        .close-btn { align-self: flex-end; background: #475569; color: white; padding: 8px 20px; border-radius: 6px; border: none; margin-bottom: 15px; font-weight: 600; }
-        .scorecard { text-align: center; padding: 40px 10px; }
-        .score-metric { font-size: 52px; color: var(--primary-color); font-weight: 800; margin: 15px 0; }
+        .btn-formula { background: #eff6ff; color: #1e40af; }
+        .btn-test { background: #f0fdf4; color: #166534; }
     </style>
 </head>
 <body>
 
     <div class="header">
         <h2>Study Vault Pro</h2>
-        <p style="font-size: 13px; opacity: 0.9; font-weight: 300;">PC&B Complete Master Dashboard • NEET Edition</p>
+        <p style="font-size: 12px; opacity: 0.9; margin-top: 5px;">Class 12th Board & NEET Edition</p>
     </div>
 
     <div class="overall-progress-card">
-        <div class="progress-info">
-            <span>Syllabus Target Mastered</span>
-            <span id="progress-text">0%</span>
-        </div>
+        <span style="font-weight: 600; color: #475569;">Syllabus Target Mastered: <span id="progress-text">0%</span></span>
         <div class="progress-bar-container">
-            <div class="progress-bar" id="main-progress"></div>
+            <div id="main-progress" class="progress-bar"></div>
         </div>
-    </div>
-
-    <div class="subject-tabs">
-        <button class="tab-btn active" onclick="switchSubject('physics')">Physics</button>
-        <button class="tab-btn" onclick="switchSubject('chemistry')">Chemistry</button>
-        <button class="tab-btn" onclick="switchSubject('biology')">Biology</button>
     </div>
 
     <div class="main-container">
+        <div class="subject-tabs">
+            <button class="tab-btn active" onclick="switchSubject('physics')">Physics</button>
+            <button class="tab-btn" onclick="switchSubject('chemistry')">Chemistry</button>
+        </div>
+
         <div id="physics" class="view-section active"></div>
         <div id="chemistry" class="view-section"></div>
-        <div id="biology" class="view-section"></div>
     </div>
 
-    <div id="formula-panel" class="modal-view">
-        <button class="close-btn" onclick="closeFormulaPanel()"><i class="fa fa-arrow-left"></i> Back to Dashboard</button>
-        <h3 id="panel-title" style="margin-bottom: 20px; color: var(--primary-color);">Formulas & Concept Maps</h3>
-        <div id="formula-content-target"></div>
-    </div>
-
-    <div id="quiz-engine" class="quiz-container">
-        <div class="quiz-header">
-            <span id="quiz-title" style="font-weight:700; font-size: 15px;">NEET Mock Arena</span>
-            <div class="timer-badge"><i class="fa fa-clock"></i> <span id="clock">10:00</span></div>
-        </div>
-        <div cs: [
-                {
-                    id: "p1",
-                    title: "Electrostatics: Electric Charges and Fields",
-                    formulas: [
-                       "Coulomb's Law Vector: F = 1/(4πε₀) * (q₁q₂)/r²",
-                        "Electric Field Strength: E = F / q_test",
-                        "Dipole Moment Configuration: p = q * (2a)",
-                        "Gauss Flux Law: Φ = ∮ E · dA = Q_enclosed / ε₀"
-                               hasDiagram: true,
-                    diagramTitle: "Electric Dipole Field Lines Representation",
-                    diagramSVG: `<svg class="diagram-wrapper-svg" width="240" height="120" viewBox="0 0 240 120">
-                        <circle cx="60" cy="60" r="18" fill="#ef4444"/>
-                       <text x="55" y="65" fill="white" font-weight="bold">+</text>
-                        <circle cx="180" cy="60" r="18" fill="#3b82f6"/>
-                        <text x="176" y="65" fill="white" font-weight="bold">-</text>
-                        <path d="M 78,60 C 110,30 130,30 162,60" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
-                 <path d="M 78,60 C 110,90 130,90 162,60" stroke="#64748b" stroke-width="2" fill="none"/>
-                        <line x1="78" y1="60" x2="162" y2="60" stroke="#64748b" stroke-width="2"/>
-                    </svg>`,
-                    questions: [
-                       { q: "What is the direction of an electric dipole moment vector?", o: ["From positive to negative charge", "From negative to positive charge", "Perpendicular to axis", "Radial outwards"], a: 1 },
-                        { q: "If dielectric constant of a medium increases, the force between charges:", o: ["Increases", "Decreases", "Remains Constant", "Becomes Zero"], a: 1 }
-                    ]
-                }
+    <script>
+        const appDatabase = {
+            physics: [
+                { id: "p1", title: "Chapter 1: Electric Charges and Fields" },
+                { id: "p2", title: "Chapter 2: Electrostatic Potential and Capacitance" }
             ],
-            chemi
-                {
-                    id: "c1",
-                    title: "Solutions & Colligative Properties",
-                    formulas: [
-                        "Molarity (M): Moles of Solute / Volume of Solution (L)",
-                        "Molality (m): Moles of Solute / Mass of Solvent (kg)",                        "Raoult's Law (Vapour Pressure): P = P° * X_solvent",
-                        "Van 't Hoff Factor Multiplier: i = Total moles after association/dissociation"
-                    ],
-                    hasDiagram: true,
-            diagramTitle: "Semipermeable Membrane Osmosis Setup",
-                    diagramSVG: `<svg class="diagram-wrapper-svg" width="240" height="120" viewBox="0 0 240 120">
-                        <rect x="20" y="20" width="200" height="80" fill="none" stroke="#0f172a" stroke-width="2"/>
-                        <line x1="120" y1="20" x2="120" y2="100" stroke="#ef4444" stroke-width="2" stroke-dasharray="4"/>
-                        <text x="35" y="55" font-size="11" fill="#1e40af">Pure Solvent</text>
-                       <text x="135" y="55" font-size="11" fill="#1e40af">Solution Zone</text>
-                        <text x="95" y="15" font-size="10" fill="#dc2626" font-weight="bold">SPM Membrane</text>
-                    </svg>`,
-                    questions: [
-                        { q: "Which concentration term remains completely unaltered during a temperature rise?", o: ["Molarity", "Normality", "Molality", "Formality"], a: 2 }
-           ]
-                }
-            ],
-            biology: [
-                {
-                    id: "b1",
-                   title: "Anatomy: Sexual Reproduction in Flowering Plants",
-                    formulas: [
-                        "💡 Focus point: Highly critical structural details of 7-Celled & 8-Nucleate Embryo Sac structure.",
-                        "Microsporogenesis Matrix: 1 Pollen Mother Cell yields 4 microspores via meiotic division cycle."
-                                 hasDiagram: true,
-                    diagramTitle: "Anatropous Ovule Embryo Sac Layout",
-                    diagramSVG: `<svg class="diagram-wrapper-svg" width="240" height="140" viewBox="0 0 240 140">
-                        <rect x="50" y="10" width="140" height="120" rx="30" fill="none" stroke="#16a34a" stroke-width="2"/>
-                       <circle cx="120" cy="35" r="8" fill="#db2777"/><circle cx="100" cy="35" r="8" fill="#db2777"/><circle cx="140" cy="35" r="8" fill="#db2777"/>
-                        <circle cx="110" cy="70" r="6" fill="#2563eb"/><circle cx="130" cy="70" r="6" fill="#2563eb"/>
-                        <circle cx="120" cy="105" r="9" fill="#ea580c"/><circle cx="95" cy="105" r="7" fill="#db2777"/><circle cx="145" cy="105" r="7" fill="#db2777"/>
-                        <text x="165" y="40" font-size="10" fill="#475569">Antipodals</text>
-               <text x="165" y="110" font-size="10" fill="#475569">Egg Cell</text>
-                    </svg>`,
-                    questions: [
-                        { q: "Filiform apparatus structure plays a crucial role in directing the pollen tube into:", o: ["Antipodals", "Synergids", "Central Cell", "Generative Core"], a: 1 }
-                    ]
-                
+            chemistry: [
+                { id: "c1", title: "Chapter 1: Solutions & Colligative Properties" },
+                { id: "c2", title: "Chapter 2: Electrochemistry" }
             ]
         };
 
-        let trackingData = JSON.parse(localStorage.getItem('study_vault_track_v3')) || {};
-
-        function renderDash
-            ['physics', 'chemistry', 'biology'].forEach(subject => {
+        function renderDash() {
+            ['physics', 'chemistry'].forEach(subject => {
                 const zone = document.getElementById(subject);
                 zone.innerHTML = '';
-                
-                appDatabase[subject].orEach(ch => {
-                    const status = trackingData[ch.id] ? 
-                        `<span style="color:var(--success-color); font-size:12px; font-weight:600;"><i class="fa fa-check-circle"></i> Mastery (${trackingData[ch.id]}%)</span>` : 
-                        `<span style="color:var(--warning-color); font-size:12px; font-weight:600;"><i class="fa fa-unlock"></i> Ready</span>`;
-                    
-                    let diagramBlock = '';
-                    if(ch.hasDiagram) {
-                        diagramBlock =                    <div class="diagram-container">
-                                <span style="font-size:11px; font-weight:600; color:#475569;"><i class="fa fa-image"></i> NEET High-Yield Layout: ${ch.diagramTitle}</span>
-                                ${ch.diagramSVG}
-                            </div>
-                        `;
-                    }
-
-                   const card = document.createElement('div');
+                appDatabase[subject].forEach(ch => {
+                    const card = document.createElement('div');
                     card.className = 'chapter-card';
-                    card.innerHTML = `
-               <div style="display:flex; justify-content:space-between; align-items:center;">
-                            <div class="chapter-title">${ch.title}</div>
-                           ${status}
-                        </div>
-                        ${diagramBlock}
-                        <div class="chapter-actions">
-                            <button class="btn btn-formula" onclick="openFormulas('${subject}', '${ch.id}')"><i class="fa fa-book-open"></i> Formula Sheet</button>
-                            <button class="btn btn-test" onclick="startNeetQuiz('${subject}', '${ch.id}')"><i class="fa fa-vial"></i> Mock Test</button>
-                        </div>
-                    `;
+                    card.innerHTML = '<div class="chapter-title">' + ch.title + '</div>' +
+                                     '<div class="chapter-actions">' +
+                                     '<button class="btn btn-formula" onclick="alert(\'Formula Sheet Coming Soon!\')">Formula Sheet</button>' +
+                                     '<button class="btn btn-test" onclick="alert(\'NEET Mock Test Panel Active!\')">Mock Test</button>' +
+                                     '</div>';
                     zone.appendChild(card);
-                });    });
-            updateProgressBar();
-        
+                });
+            });
+        }
 
-        function switchSubject(sub) {
+        function switchSubject(subjectId) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active'));
-              event.target.classList.add('active');
-            document.getElementById(sub).classList.add('active');
+            event.target.classList.add('active');
+            document.getElementById(subjectId).add('active');
         }
 
-        fnction updateProgressBar() {
-            const totalChapters = appDatabase.physics.length + appDatabase.chemistry.length + appDatabase.biology.length;
-            const completed = Object.keys(trackingData).length;
-            const percentage = totalChapters > 0 ? Math.round((completed / totalChapters) * 100) : 0;
-             document.getElementById('main-progress').style.width = percentage + '%';
-            document.getElementById('progress-text').innerText = percentage + '%';
-        }
-        function openFormulas(subject, chId) {
-            const chapter = appDatabase[subject].find(c => c.id === chId);
-            document.getElementById('panel-title').innerText = chapter.title;
-            const target = document.getElementById('formula-co
+        window.onload = function() {
+            renderDash();
+            document.getElementById('main-progress').style.width = '25%';
+            document.getElementById('progress-text').innerText = '25%';
+        };
+    </script>
+</body>
+</html>
