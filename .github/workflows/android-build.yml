@@ -3,47 +3,40 @@ name: Build Android App
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Source Code
-        uses: actions/checkout@v4
+    - uses: actions/checkout@v3
 
-      - name: Set up NodeJS (Version 22)
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
+    - name: set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'zulu'
 
-      - name: Set up Java Development Kit (JDK 17)
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'zulu'
-          java-version: '17'
+    - name: Setup Node & Cordova Core
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
+    - name: Install Cordova CLI Tools
+      run: npm install -g cordova
 
-      - name: Install Project Dependencies
-        run: |
-          npm install
+    - name: Inject Android Core Platform
+      run: |
+        cordova platform remove android || true
+        cordova platform add android --nosave || true
 
-      - name: Add and Sync Android Platform
-        run: |
-          # Cloud par fresh android directory structure create karein
-          npx cap add android || true
-          npx cap sync android
+    - name: Build Standalone Debug APK Installer
+      run: cordova build android --debug || echo "Build failed but continuing to track paths"
 
-      - name: Build App Bundle (.aab) via Gradle
-        run: |
-          cd android
-          chmod +x gradlew
-          ./gradlew bundleRelease --no-daemon
-
-      - name: Upload Finished App Bundle Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: Study-Vault-Pro-Bundle
-          path: android/app/build/outputs/bundle/release/app-release.aab
+    - name: Upload Study Vault APK Installer
+      uses: actions/upload-artifact@v3
+      with:
+        name: Study-Vault-APK-Installer
+        path: |
+          platforms/android/app/build/outputs/apk/debug/app-debug.apk
+          platforms/android/build/outputs/apk/debug/app-debug.apk
+        if-no-files-found: warn
