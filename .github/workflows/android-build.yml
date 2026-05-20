@@ -16,27 +16,27 @@ jobs:
         java-version: '17'
         distribution: 'zulu'
 
-    - name: Setup Node & Cordova Core
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
-
-    - name: Install Cordova CLI Tools
-      run: npm install -g cordova
-
-    - name: Inject Android Core Platform
+    - name: Install Native Android Builder
       run: |
-        cordova platform remove android || true
-        cordova platform add android --nosave || true
+        npm install -g @iobroker/legacy-cordova-builder || true
+        npm install -g cordova
 
-    - name: Build Standalone Debug APK Installer
-      run: cordova build android --debug || echo "Build failed but continuing to track paths"
+    - name: Configure App Framework
+      run: |
+        cordova platform add android --noscript || true
+        mkdir -p platforms/android/app/src/main/assets/www
+        cp -r www/* platforms/android/app/src/main/assets/www/ || true
 
-    - name: Upload Study Vault APK Installer
+    - name: Build Pure Debug APK
+      run: |
+        cd platforms/android || cd .
+        ./gradlew assembleDebug --stacktrace || ./gradlew assembleDebug
+
+    - name: Upload Testing Installer APK
       uses: actions/upload-artifact@v3
       with:
         name: Study-Vault-APK-Installer
         path: |
+          **/build/outputs/apk/debug/*.apk
           platforms/android/app/build/outputs/apk/debug/app-debug.apk
-          platforms/android/build/outputs/apk/debug/app-debug.apk
-        if-no-files-found: warn
+        if-no-files-found: error
