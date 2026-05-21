@@ -22,21 +22,21 @@
                 </h1>
                 <p class="text-xs text-slate-400 mt-0.5">Target: 12th Boards & NEET 🩺</p>
             </div>
-            <div class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2.5 py-1 rounded-full border border-emerald-500/30 font-bold uppercase">PCB Portal</div>
+            <div class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2.5 py-1 rounded-full border border-emerald-500/30 font-bold uppercase">Full PCB Edition</div>
         </div>
     </header>
 
     <div id="view-home" class="view-section active space-y-6 pt-4">
         <main class="max-w-md mx-auto px-4 space-y-6">
             <div class="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 p-5 rounded-2xl shadow-lg">
-                <span class="bg-amber-400 text-slate-900 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Self Study Hub</span>
-                <h2 class="text-lg font-bold mt-1 text-white">RBSE Class 12 Portal</h2>
-                <p class="text-xs text-slate-200 mt-1">Apna subject select karke full course content, live dynamic tests aur AI Doubt tool open karein.</p>
+                <span class="bg-amber-400 text-slate-900 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Syllabus Master</span>
+                <h2 class="text-lg font-bold mt-1 text-white">RBSE Class 12 Complete Hub</h2>
+                <p class="text-xs text-slate-200 mt-1">Sabhie chapters loaded hain. Revision notes padhein, AI doubts clear karein aur mock test attempt karein.</p>
             </div>
 
             <section class="space-y-3">
                 <h2 class="font-bold text-sm text-slate-400 uppercase tracking-wider px-1">
-                    <i class="fa-solid fa-book-bookmark text-blue-400 mr-1"></i> Select Subject
+                    <i class="fa-solid fa-book-bookmark text-blue-400 mr-1"></i> Core Subjects
                 </h2>
                 
                 <div onclick="openLibrary('physics')" class="bg-slate-800 border border-slate-700 rounded-2xl p-4 flex justify-between items-center cursor-pointer hover:border-blue-500 transition-all">
@@ -44,7 +44,7 @@
                         <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-xl text-blue-400"><i class="fa-solid fa-atom"></i></div>
                         <div>
                             <h3 class="font-bold text-base">Physics</h3>
-                            <p class="text-xs text-slate-400">Notes, Formulas & Derivations</p>
+                            <p class="text-xs text-slate-400">All 14 Core Chapters Included</p>
                         </div>
                     </div>
                     <i class="fa-solid fa-chevron-right text-slate-500 mr-2"></i>
@@ -55,7 +55,7 @@
                         <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-xl text-amber-400"><i class="fa-solid fa-flask-vial"></i></div>
                         <div>
                             <h3 class="font-bold text-base">Chemistry</h3>
-                            <p class="text-xs text-slate-400">Organic, Inorganic & Physical</p>
+                            <p class="text-xs text-slate-400">All 10 Core Chapters Included</p>
                         </div>
                     </div>
                     <i class="fa-solid fa-chevron-right text-slate-500 mr-2"></i>
@@ -66,7 +66,7 @@
                         <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-xl text-emerald-400"><i class="fa-solid fa-dna"></i></div>
                         <div>
                             <h3 class="font-bold text-base">Biology</h3>
-                            <p class="text-xs text-slate-400">Botany & Zoology Special</p>
+                            <p class="text-xs text-slate-400">All 13 Botany & Zoology Chapters</p>
                         </div>
                     </div>
                     <i class="fa-solid fa-chevron-right text-slate-500 mr-2"></i>
@@ -132,10 +132,9 @@
     </nav>
 
     <script>
-        // Note: I have updated the call format. If it still shows errors, regenerate a key at Google AI Studio.
-        const GEMINI_API_KEY = "AIzaSyCJIAXd4ojodsKu3W4JVvtcQ2PP_gkY1C4";
+        // Note: Check/Renew key at Google AI Studio if you hit quote blockades.
+        const GEMINI_API_KEY = "AIzaSyDse7gFpC8baZJBPT55MQUM6bShQmnbMDU";
 
-        // Fixed URLs to direct state board or home directory to prevent 404 errors
         const selfStudyLinks = {
             physics: "https://www.selfstudys.com/state-board/rajasthan",
             chemistry: "https://www.selfstudys.com/state-board/rajasthan",
@@ -144,66 +143,54 @@
 
         const studyDatabase = {
             physics: [
-                {
-                    title: "Electric Charges and Fields",
-                    formula: "F = k * (q1 * q2) / r² | E = F / q | Φ = Q / ε₀",
-                    notes: "Charge is quantized: q = ±ne. Electric flux through a closed surface is given by Gauss's Law.",
-                    quiz: [
-                        { q: "What is the core SI unit of electric flux?", a: ["N m² C⁻¹", "N C m⁻²", "Volt / meter", "Ohm meter"], correct: 0 },
-                        { q: "Dielectric constant of pure water is approx:", a: ["1", "Infinite", "80", "1.2"], correct: 2 }
-                    ]
-                },
-                {
-                    title: "Electrostatic Potential and Capacitance",
-                    formula: "V = W / q | C = Q / V | C = ε₀A / d",
-                    notes: "Potential due to a point charge is inversely proportional to distance. Capacitance increases with dielectric material.",
-                    quiz: [
-                        { q: "What is the unit of capacitance?", a: ["Farad", "Ohm", "Henry", "Tesla"], correct: 0 }
-                    ]
-                }
+                { title: "Electric Charges and Fields", formula: "F = k*q1*q2/r² | E = F/q | Φ = ∮E·dA = Q/ε₀", notes: "Quantization of charge (q=ne). Gauss's law is critical for calculating field structures around asymmetric systems.", quiz: [{q: "What is the core SI unit of electric flux?", a: ["N m² C⁻¹", "N C m⁻²", "Volt / meter", "Ohm meter"], correct: 0}] },
+                { title: "Electrostatic Potential and Capacitance", formula: "V = U/q = kQ/r | C = Q/V | C = ε₀A/d", notes: "Equipotential surfaces are always perpendicular to electric field lines. Dielectrics systematically enhance global capacitance.", quiz: [{q: "What is the SI unit of electric capacitance?", a: ["Farad", "Ohm", "Henry", "Coulomb"], correct: 0}] },
+                { title: "Current Electricity", formula: "V = IR | R = ρl/A | I = nAeV_d", notes: "Ohm's law variations. Kirchhoff's Current Law (KCL) tracks charge conservation; Kirchhoff's Voltage Law (KVL) monitors energy conservation.", quiz: [{q: "Temperature increase causes resistance of a semiconductor to:", a: ["Increase", "Decrease", "Remain Constant", "Fluctuate"], correct: 1}] },
+                { title: "Moving Charges and Magnetism", formula: "dB = (μ₀/4π)*(I dl × r)/r³ | F = q(V × B)", notes: "Biot-Savart Law outlines localized generation vector properties. Ampere's Law computes circular structural density profiles.", quiz: [{q: "Magnetic field intensity inside a long ideal solenoid is:", a: ["Zero", "Uniform", "Variable", "Infinite"], correct: 1}] },
+                { title: "Magnetism and Matter", formula: "M = m × 2l | B = μ₀H | χ = M/H", notes: "Magnetic properties of materials: Diamagnetic, Paramagnetic, and Ferromagnetic. Gauss's Law for magnetism proves monopoles do not exist.", quiz: [{q: "Which material has negative magnetic susceptibility?", a: ["Ferromagnetic", "Paramagnetic", "Diamagnetic", "None"], correct: 2}] },
+                { title: "Electromagnetic Induction", formula: "ε = -dΦ/dt = Blv | L = Φ/I", notes: "Faraday's Law determines global electromotive force intensity. Lenz's Law establishes systemic back-emf behavioral opposition directions.", quiz: [{q: "Lenz's law is a direct consequence of the law of conservation of:", a: ["Charge", "Mass", "Energy", "Momentum"], correct: 2}] },
+                { title: "Alternating Current", formula: "I_rms = I₀/√2 | Z = √(R² + (X_L - X_C)²) | P = V_rms*I_rms*cos(φ)", notes: "Resonance architectures surface cleanly when X_L equals X_C. Power factors scale efficiency levels.", quiz: [{q: "At resonance, the impedance of a series LCR network is:", a: ["Maximum", "Minimum", "Zero", "Infinite"], correct: 1}] },
+                { title: "Electromagnetic Waves", formula: "c = 1/√(μ₀ε₀) = E₀/B₀ | I = u_avg * c", notes: "Displacement current bridges capacitors safely. EM Spectrum ranges sequentially from high-frequency Gamma down to Radio transmission loops.", quiz: [{q: "Which EM wave components possess the shortest absolute wavelength profile?", a: ["X-Rays", "Gamma Rays", "Microwaves", "Ultraviolet"], correct: 1}] },
+                { title: "Ray Optics and Optical Instruments", formula: "1/f = 1/v + 1/u | 1/f = (μ-1)(1/R1 - 1/R2) | M = D/f", notes: "Total Internal Reflection supports modern fiber conduits. Lens Maker formula models geometric depth modifications cleanly.", quiz: [{q: "For stable Total Internal Reflection, light must migrate:", a: ["Denser to Rarer medium", "Rarer to Denser medium", "Air to Glass only", "Vacuum to Water only"], correct: 0}] },
+                { title: "Wave Optics", formula: "I = I1 + I2 + 2√(I1*I2)cos(φ) | β = λD/d", notes: "Huygens' Principle monitors front configurations. Young's Double Slit Experiment (YDSE) maps constructive wave overlaps.", quiz: [{q: "If YDSE setup shifts entirely into clean water, fringe width will:", a: ["Increase", "Decrease", "Stay Unchanged", "Become zero"], correct: 1}] },
+                { title: "Dual Nature of Radiation and Matter", formula: "E = hν = K_max + φ₀ | λ = h/p = h/√(2m_eV)", notes: "Photoelectric threshold constraints verify photon discrete particle nature. De Broglie structures state matter exhibits wave behaviors.", quiz: [{q: "Slope of the photoelectric stopping potential versus frequency graph equals:", a: ["h", "e", "h/e", "e/h"], correct: 2}] },
+                { title: "Atoms", formula: "1/λ = R*(1/n_f² - 1/n_i²) | r_n ∝ n²/Z", notes: "Rutherford alpha scatter maps concentrated nuclei locations. Bohr model maps distinct electron orbit energy level structures.", quiz: [{q: "Balmer series transitions drop down explicitly onto which principal orbit level?", a: ["n=1", "n=2", "n=3", "n=4"], correct: 1}] },
+                { title: "Nuclei", formula: "R = R₀*A^(1/3) | E = Δm*c²", notes: "Nuclear density profiles remain independent of core mass volumes. Binding energy per nucleon tracks localized structure stability.", quiz: [{q: "Nuclear force features are categorized globally as:", a: ["Long-range electromagnetic", "Short-range charge-independent", "Weak gravitational", "Spin independent long range"], correct: 1}] },
+                { title: "Semiconductor Electronics", formula: "I_E = I_B + I_C | σ = e(n_e*μ_e + n_h*μ_h)", notes: "P-N junctions act as current rectifiers. Doping adjusts trace levels to modify charge carrier counts cleanly.", quiz: [{q: "An ideal forward-biased P-N junction diode displays:", a: ["Infinite resistance", "Zero resistance", "Negative resistance", "Breakdown voltage profiles"], correct: 1}] }
             ],
             chemistry: [
-                {
-                    title: "Solutions",
-                    formula: "Molarity (M) = Moles / Vol (L) | p = p° * x",
-                    notes: "Vapour pressure decreases when a non-volatile solute is added. Osmotic pressure is given by Π = CRT.",
-                    quiz: [
-                        { q: "Which property is independent of temperature changes?", a: ["Molarity", "Normality", "Molality", "Formality"], correct: 2 }
-                    ]
-                },
-                {
-                    title: "Electrochemistry",
-                    formula: "E_cell = E°_cell - (0.0591/n) * log(Q) | ΔG = -nFE",
-                    notes: "Kohlrausch's law helps in calculating limiting molar conductivity of weak electrolytes.",
-                    quiz: [
-                        { q: "The unit of cell constant is:", a: ["cm⁻¹", "Ohm⁻¹", "Siemens", "Ohm cm"], correct: 0 }
-                    ]
-                }
+                { title: "Solutions", formula: "M = n/V(L) | m = n/m_solvent(kg) | p_A = p_A° * x_A", notes: "Colligative traits track solute particle counts over nature. Henry's rule handles gas solubility ceilings inside liquid carriers.", quiz: [{q: "Which configuration metric avoids alteration during structural temperature transitions?", a: ["Molarity", "Molality", "Normality", "Formality"], correct: 1}] },
+                { title: "Electrochemistry", formula: "E_cell = E°_cell - (0.0591/n)*log(Q) | ΔG = -nFE°", notes: "Nernst equation computes variable real-time voltages. Kohlrausch's method solves weak electrolyte boundary tracking parameters.", quiz: [{q: "The base structural metric unit defining the standard cell constant is:", a: ["cm⁻¹", "Ohm⁻¹ cm⁻¹", "Siemens", "Ohm cm"], correct: 0}] },
+                { title: "Chemical Kinetics", formula: "k = (2.303/t)*log(A₀/A) | k = A * e^(-E_a/RT)", notes: "First-order half-lives scale completely independently from baseline concentrations. Arrhenius parameters chart activation energy barriers.", quiz: [{q: "If reactant concentrations double on a first-order path, the rate constant will:", a: ["Double", "Quadruple", "Halve", "Remain unchanged"], correct: 3}] },
+                { title: "d and f Block Elements", formula: "μ = √[n(n+2)] Bohr Magneton (BM)", notes: "Transition elements display variable oxidation steps due to trace (n-1)d involvement. Lanthanoid contraction alters atomic radii trends.", quiz: [{q: "Which transition metal ion exhibits diamagnetic behavioral characteristics?", a: ["Cu²⁺", "Ni²⁺", "Sc³⁺", "Fe³⁺"], correct: 2}] },
+                { title: "Coordination Compounds", formula: "Primary Valence (Oxidation) | Secondary (Coordination No.)", notes: "Werner's insights divide dynamic linkage traits. Crystal Field Theory (CFT) measures d-orbital splitting gaps.", quiz: [{q: "The coordination number of Central Atom within [Co(ox)₃]³⁻ structure is:", a: ["3", "6", "4", "2"], correct: 1}] },
+                { title: "Haloalkanes and Haloarenes", formula: "R-X Reactivity: SN1 (3°>2°>1°) | SN2 (1°>2°>3°)", notes: "SN1 systems utilize planar carbocation links yielding racemic paths. SN2 mechanisms deploy single-step back attacks causing stereochemical inversion.", quiz: [{q: "Which substrate molecule optimizes standard single-step SN2 displacement tracks?", a: ["CH₃Cl", "CH₃CH₂Cl", "(CH₃)₂CHCl", "(CH₃)₃CCl"], correct: 0}] },
+                { title: "Alcohols, Phenols and Ethers", formula: "R-OH + HX → R-X | Ar-OH (Acidic nature due to resonance)", notes: "Lucas test timelines identify alcohol structural types via turbidity offsets. Phenol acidity relies on phenoxide ion stability.", quiz: [{q: "Phenol reaction with chloroform in aqueous NaOH forms salicylaldehyde via:", a: ["Kolbe reaction", "Reimer-Tiemann reaction", "Friedel-Crafts loop", "Wurtz route"], correct: 1}] },
+                { title: "Aldehydes, Ketones and Carboxylic Acids", formula: "R-CHO + Tollen's → Ag mirror | Nucleophilic Addition", notes: "Aldehydes clean Tollen's/Fehling's test verification checks. Carboxylic acids display higher boiling boundaries over comparable weights.", quiz: [{q: "Which structural option completely avoids cross-reactivity with Aldol condensation pathways?", a: ["CH₃CHO", "CH₃COCH₃", "HCHO", "CH₃CH₂CHO"], correct: 2}] },
+                { title: "Amines", formula: "Basicity: 2° > 1° > 3° (Aliphatic amines in water updates)", notes: "Hoffmann Bromamide pathways degrade lengths smoothly. Carbylamine reactions reveal 1° structural groups via toxic isocyanide odors.", quiz: [{q: "Which analytical test path evaluates primary amine tracks exclusively?", a: ["Lucas test", "Carbylamine test", "Tollen's check", "Biuret route"], correct: 1}] },
+                { title: "Biomolecules", formula: "Glucose (Aldohexose) | Peptide linkage (-CO-NH-)", notes: "Proteins utilize fundamental L-amino structural components. DNA/RNA trace variations center on structural sugar bases.", quiz: [{q: "Which foundational base option is entirely missing from standard DNA chains?", a: ["Adenine", "Guanine", "Cytosine", "Uracil"], correct: 3}] }
             ],
             biology: [
-                {
-                    title: "Human Reproduction",
-                    formula: "High NEET Weightage Structure Diagrams",
-                    notes: "Spermatogenesis occurs in seminiferous tubules. Oogenesis is initiated during embryonic development.",
-                    quiz: [
-                        { q: "Which hormone triggers ovulation?", a: ["LH", "FSH", "Progesterone", "Estrogen"], correct: 0 }
-                    ]
-                },
-                {
-                    title: "Reproductive Health",
-                    formula: "Important IUD details & ART methods",
-                    notes: "Amniocentesis is used for sex determination and genetic disorders. IVF involves embryo transfer.",
-                    quiz: [
-                        { q: "Which of the following is a copper-releasing IUD?", a: ["CuT", "Lippes Loop", "LNG-20", "Progestasert"], correct: 0 }
-                    ]
-                }
+                { title: "Sexual Reproduction in Flowering Plants", formula: "Double Fertilization = Syngamy + Triple Fusion", notes: "Microsporogenesis generates pollen units. Structural tapetum tissues provide critical development nutrition.", quiz: [{q: "The functional ploidy profile tracked inside standard endosperm cells is:", a: ["Haploid (n)", "Diploid (2n)", "Triploid (3n)", "Tetraploid (4n)"], correct: 2}] },
+                { title: "Human Reproduction", formula: "Gametogenesis Timeline | Oogenesis vs Spermatogenesis", notes: "Spermatogenesis runs ongoing cycles in seminiferous tubules. LH surges prompt scheduled follicle breakdowns triggering ovulation.", quiz: [{q: "Which specific hormone path triggers the human ovulation sequence?", a: ["LH", "FSH", "Progesterone", "Estrogen"], correct: 0}] },
+                { title: "Reproductive Health", formula: "Contraceptive Methods (IUDs, Pills) | ART (IVF, ZIFT, GIFT)", notes: "Amniocentesis targets cellular checks over gender filters. IUD variants like CuT suppress sperm migration dynamics.", quiz: [{q: "Which device configuration acts as a reliable copper-releasing IUD option?", a: ["CuT", "Lippes Loop", "LNG-20", "Progestasert"], correct: 0}] },
+                { title: "Principles of Inheritance and Variation", formula: "Monohybrid Ratio = 3:1 | Dihybrid structural check = 9:3:3:1", notes: "Mendelian patterns explore discrete sorting attributes. Chromosomal discrepancies link directly to Down's or Turner complexes.", quiz: [{q: "Mendelian test cross combinations utilize which parental structural profiles?", a: ["Dominant Phenotype × Recessive Parent", "Dominant × Dominant", "Recessive × Recessive", "F1 generation selfing loops"], correct: 0}] },
+                { title: "Molecular Basis of Inheritance", formula: "Central Dogma: DNA → RNA → Protein", notes: "Semiconservative replication maps cleanly. Transcription maps templates while tRNA translates sequences into protein blocks via structural codons.", quiz: [{q: "The primary initiation codon tracking genetic translation tasks is:", a: ["AUG", "UAA", "UAG", "UGA"], correct: 0}] },
+                { title: "Evolution", formula: "Hardy-Weinberg equilibrium: p² + 2pq + q² = 1", notes: "Homologous frameworks map common ancestral origins. Industrial melanism scenarios illustrate selective adaptation processes.", quiz: [{q: "Flippers shared across penguins and dolphins model which trajectory pattern?", a: ["Divergent evolution", "Convergent evolution", "Adaptive radiation", "Saltation pathways"], correct: 1}] },
+                { title: "Human Health and Disease", formula: "Pathogens: Plasmodium cycle | Active vs Passive Immunity", notes: "Malaria tracks clear life stages between mosquitoes and humans. B/T cellular systems construct systemic immune defenses.", quiz: [{q: "Which specific antibody class dominates early colostrum secretions?", a: ["IgG", "IgA", "IgM", "IgE"], correct: 1}] },
+                { title: "Microbes in Human Welfare", formula: "Biocontrol Agents | Sewage Treatment (Aerobic/Anaerobic)", notes: "LAB transforms milk structures cleanly. Secondary wastewater treatments leverage aerobic floc setups to depress BOD levels.", quiz: [{q: "The principal gas entity forming large volumes of biogas generation outputs is:", a: ["CO₂", "CH₄", "H₂S", "O₂"], correct: 1}] },
+                { title: "Biotechnology: Principles and Processes", formula: "PCR Amplification Steps: Denaturation → Annealing → Extension", notes: "Restriction enzymes slice genetic configurations at exact palindromic sequences. Gel electrophoresis arranges fragments by molecular weight.", quiz: [{q: "Which heat-stable enzyme drives PCR amplification loops?", a: ["DNA Ligase", "Taq Polymerase", "RNA Polymerase", "EcoRI"], correct: 1}] },
+                { title: "Biotechnology and its Applications", formula: "Bt Toxins (Cry proteins) | Gene Therapy (ADA tracking)", notes: "Bt options combat pests organically via target alkaline gut disruptions. RNA interference silences problematic viral translation paths.", quiz: [{q: "First clinical gene therapy intervention targeted which critical deficit?", a: ["Adenosine Deaminase deficiency", "Cystic Fibrosis", "Hemophilia", "Sickle cell anemia"], correct: 0}] },
+                { title: "Organisms and Populations", formula: "Growth equations: dN/dt = rN | Interaction matrix frameworks", notes: "Mutualism maps win-win connections. Competitive exclusion frameworks state two matching niche entities cannot coexist permanently.", quiz: [{q: "An interaction pattern tracking a (+, 0) benefit balance represents:", a: ["Mutualism", "Parasitism", "Commensalism", "Amensalism"], correct: 2}] },
+                { title: "Ecosystem", formula: "10% Energy Transfer Efficiency Cap Rule", notes: "Primary productivity benchmarks rate structural photosynthetic carbon capture metrics. Decomposers recycle essential base elements.", quiz: [{q: "Which configuration presents an inverted biomass pyramid shape profile?", a: ["Forest ecosystem", "Grassland ecosystem", "Deep marine ecosystem", "Desert biome"], correct: 2}] },
+                { title: "Biodiversity and Conservation", formula: "In-situ (National Parks) vs Ex-situ (Cryopreservation)", notes: "Sacred groves shield rare localized genetic lines. Core biodiversity hotspots feature accelerated endemism coupled with immediate threat vectors.", quiz: [{q: "Which conservation classification protects organisms outside native ecosystems?", a: ["National Park", "Wildlife Sanctuary", "Zoological Botanical Garden", "Biosphere Reserve"], correct: 2}] }
             ]
         };
 
         const masterSyllabusIndex = { 
-            physics: ["Electric Charges and Fields", "Electrostatic Potential and Capacitance"], 
-            chemistry: ["Solutions", "Electrochemistry"], 
-            biology: ["Human Reproduction", "Reproductive Health"] 
+            physics: studyDatabase.physics.map(c => c.title), 
+            chemistry: studyDatabase.chemistry.map(c => c.title), 
+            biology: studyDatabase.biology.map(c => c.title) 
         };
 
         let currentSubject = "physics"; let currentChapter = "Electric Charges and Fields"; let ActiveQuizQuestions = [];
@@ -224,12 +211,12 @@
 
         function openLibrary(subject) {
             currentSubject = subject; switchTab('notes');
-            document.getElementById('subject-title').innerText = subject.toUpperCase() + " Study Panel";
+            document.getElementById('subject-title').innerText = subject.toUpperCase() + " Chapters";
             const targetUrl = selfStudyLinks[subject] || "https://www.selfstudys.com";
             document.getElementById('self-study-banner').innerHTML = `
-                <p class="text-xs text-slate-300 mb-2">📚 Open Rajasthan State Board Material Hub:</p>
+                <p class="text-xs text-slate-300 mb-2">📚 Direct Rajasthan State Board Reference:</p>
                 <a href="${targetUrl}" target="_blank" class="inline-block bg-emerald-600 text-white font-bold text-xs px-4 py-2 rounded-xl shadow-md">
-                    <i class="fa-solid fa-arrow-up-right-from-square mr-1"></i> Open SelfStudys RBSE Material
+                    <i class="fa-solid fa-arrow-up-right-from-square mr-1"></i> Open SelfStudys RBSE Hub
                 </a>
             `;
             const container = document.getElementById('chapters-list-container'); container.innerHTML = "";
@@ -240,7 +227,7 @@
                 if(foundCh) {
                     innerContent = `
                         <div class="mt-3 pt-3 border-t border-slate-700/40 space-y-2">
-                            <div class="bg-slate-900/60 p-2.5 rounded-xl border border-slate-700/40"><span class="text-[11px] font-bold text-amber-400 block">Core Formula/Key Points:</span><code class="text-xs text-emerald-300 block font-mono mt-0.5">${foundCh.formula}</code></div>
+                            <div class="bg-slate-900/60 p-2.5 rounded-xl border border-slate-700/40"><span class="text-[11px] font-bold text-amber-400 block">Core Concepts / Formulae:</span><code class="text-xs text-emerald-300 block font-mono mt-0.5">${foundCh.formula}</code></div>
                             <div class="text-xs text-slate-400 bg-slate-900/30 p-2.5 rounded-xl leading-relaxed"><span class="font-bold text-slate-300 block mb-0.5">Quick Revision:</span>${foundCh.notes}</div>
                         </div>
                     `;
@@ -318,11 +305,11 @@
             chatBox.scrollTop = chatBox.scrollHeight;
             
             try {
-                // Fixed direct streamlined payload structure for clean network transmission
+                // Streamlined structural payload ensuring clean transmission to Gemini endpoint
                 const payload = { 
                     contents: [{ 
                         parts: [{ 
-                            text: `You are an expert tutor for 12th Board & NEET. Subject: ${currentSubject}, Chapter: ${currentChapter}. Answer this user question precisely: ${query}` 
+                            text: `You are a highly premium AI tutor specializing in Indian 12th Board Exams and NEET. Deliver extremely accurate, clear scientific explanations. Subject: ${currentSubject}, Chapter: ${currentChapter}. Student Question: ${query}` 
                         }] 
                     }] 
                 };
@@ -341,17 +328,18 @@
                     let cleanHTML = textOut.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>").replace(/\*(.*?)\*/g, "<i>$1</i>").replace(/\n/g, "<br>");
                     chatBox.innerHTML += `<div class="bg-slate-800 p-3 rounded-2xl max-w-[85%] border border-slate-700/50 text-sm leading-relaxed">${cleanHTML}</div>`;
                 } else { 
-                    chatBox.innerHTML += `<div class="bg-slate-800 p-3 rounded-2xl max-w-[85%] text-rose-400">Response parsing error. Please check or renew API Key on line 144.</div>`; 
+                    chatBox.innerHTML += `<div class="bg-slate-800 p-3 rounded-2xl max-w-[85%] text-rose-400">Response parsing error. Make sure your API Key on line 144 is active.</div>`; 
                 }
             } catch (error) { 
                 if(document.getElementById(loadingId)) document.getElementById(loadingId).remove(); 
-                chatBox.innerHTML += `<div class="bg-slate-800 p-3 rounded-2xl max-w-[85%] text-rose-400">Network connection failed. Make sure your internet is working or verify the API key.</div>`; 
+                chatBox.innerHTML += `<div class="bg-slate-800 p-3 rounded-2xl max-w-[85%] text-rose-400">Network Error. Check connectivity or verify the API key.</div>`; 
             }
             chatBox.scrollTop = chatBox.scrollHeight;
         }
     </script>
 </body>
 </html>
+
 
 
 
